@@ -1,0 +1,25 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:WpfApp2" x:Class="WpfApp2.MainContentWindow" mc:Ignorable="d" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Title="MainContentWindow" Height="550" Width="800">
+
+    <Grid>
+        <materialDesign:Card Padding="0" Margin="0">
+            <ToolBarPanel DockPanel.Dock="Top" Height="70" VerticalAlignment="Top">
+                <ToolBar ToolBarTray.IsLocked="True" Height="72" VerticalAlignment="Top">
+                    <Button Name="btnDSNhanVien" ToolTip="Nhan Vien" Click="btnDSNhanVien_Click" VerticalAlignment="Center" Width="116" Margin="0,0,0,0" Height="72">
+                        <materialDesign:PackIcon Kind="Person" Height="42" Width="78"/>
+                    </Button>
+                    <Button Name="btnDSKho" Click="btnDSKho_Click" ToolTip="Kho" VerticalAlignment="Center" Width="116" Margin="0,0,0,0" Height="72">
+                        <materialDesign:PackIcon Kind="Archive" Height="42" Width="78"/>
+                    </Button>
+                    <ComboBox HorizontalAlignment="Right" Name="cbxCN" VerticalAlignment="Center" Width="176" Margin="0,0,0,0" />
+                </ToolBar>
+            </ToolBarPanel>
+        </materialDesign:Card>
+        <StackPanel x:Name="pnContent" Margin="0,75,0,0"/>
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>
+    </Grid>
+</Window>
