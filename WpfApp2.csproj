@@ -67,6 +67,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windown\AddPhieuNhap.xaml.cs">
+      <DependentUpon>AddPhieuNhap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddHoaDon.xaml.cs">
+      <DependentUpon>AddHoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\HoaDon.xaml.cs">
+      <DependentUpon>HoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\PhieuNhap.xaml.cs">
+      <DependentUpon>PhieuNhap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddDatHang.xaml.cs">
+      <DependentUpon>AddDatHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddVatTu.xaml.cs">
+      <DependentUpon>AddVatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\DatHang.xaml.cs">
+      <DependentUpon>DatHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\VatTu.xaml.cs">
+      <DependentUpon>VatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddDanhMucVatTu.xaml.cs">
+      <DependentUpon>AddDanhMucVatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\DanhMucVatTu.xaml.cs">
+      <DependentUpon>DanhMucVatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddNhaCungCap.xaml.cs">
+      <DependentUpon>AddNhaCungCap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\NhaCungCap.xaml.cs">
+      <DependentUpon>NhaCungCap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddKhachHang.xaml.cs">
+      <DependentUpon>AddKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\KhachHang.xaml.cs">
+      <DependentUpon>KhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windown\AddKho.xaml.cs">
+      <DependentUpon>AddKho.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\ValidationRules.cs" />
     <Compile Include="MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
@@ -103,6 +148,66 @@
     </Compile>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\UpdateDataWindow.cs" />
+    <Page Include="Windown\AddPhieuNhap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\HoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\PhieuNhap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddDatHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddVatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\DatHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\VatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddDanhMucVatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\DanhMucVatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddNhaCungCap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\NhaCungCap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddKhachHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\KhachHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windown\AddKho.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

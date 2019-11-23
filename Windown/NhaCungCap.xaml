@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="WpfApp2.NhaCungCap"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp2"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
+                <Button x:Name="btnAdd" Click="btnAdd_Click" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="Add"/>
+                </Button>
+                <Button Name="btnEdit" Click="btnEdit_Click" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="Edit"/>
+                </Button>
+                <Button x:Name="btnSave" Click="btnSave_Click" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="ContentSave"/>
+                </Button>
+                <Button Name="btnRemove" Click="btnRemove_Click" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="Delete"/>
+                </Button>
+                <Button Click="btnRefresh_Click" x:Name="btnRefresh" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="Refresh"/>
+                </Button>
+                <Button x:Name="btnUndo" Click="btnUndo_Click" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="Undo"/>
+                </Button>
+                <Button x:Name="btnRedo" Click="btnRedo_Click" VerticalAlignment="Top">
+                    <materialDesign:PackIcon Kind="Redo"/>
+                </Button>
+                <Separator/>
+                <TextBox materialDesign:HintAssist.Hint="Tìm theo mã nhà cung cấp" Name="txbSearch" Padding="0 0 0 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                <Button Name="btnSearch" Click="btnSearch_Click" VerticalAlignment="Center" Padding="0">
+                    <materialDesign:PackIcon Kind="Search"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <DataGrid Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã nhà cung cấp" Binding="{Binding NhaCungCapId}"/>
+                <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
+                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}" />
+                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDienThoai}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DockPanel FlowDirection="RightToLeft" LastChildFill="False" Margin="0,0,8,0" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="230">
+            <TextBlock Padding="5">
+                <Hyperlink Name="linkGo" Click="linkGo_Click">Go</Hyperlink>
+            </TextBlock>
+            <TextBox Name="tbxPage" Padding="0 0 0 0" Height="27" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+            <TextBlock Name="tblNumPage" Padding="5" HorizontalAlignment="Center" Width="40" VerticalAlignment="Center" Height="24" TextWrapping="Wrap" Text="1/1" />
+            <TextBlock Padding="5">
+                <Hyperlink Name="linkNext" Click="linkNext_Click">Next</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="5">
+                <Hyperlink Name="linkPre" Click="linkPre_Click">Pre</Hyperlink>
+            </TextBlock>
+
+        </DockPanel>
+    </Grid>
+</UserControl>

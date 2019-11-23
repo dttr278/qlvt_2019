@@ -9,49 +9,47 @@
         <local:ChiNhanhConverter x:Key="chiNhanhConverter"/>
     </UserControl.Resources>
     <Grid>
-        <ToolBarTray DockPanel.Dock="Top" Height="60" VerticalAlignment="Top">
-            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" Height="60" HorizontalAlignment="Right" Width="800" Margin="0,0,-247,0">
-                <Button x:Name="btnAdd" Click="btnAdd_Click" VerticalAlignment="Top" Width="75" Margin="0,0,0,0">
+        <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
+                <Button x:Name="btnAdd" Click="btnAdd_Click" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="Add"/>
                 </Button>
-                <Button Name="btnEdit" Click="btnEdit_Click" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button Name="btnEdit" Click="btnEdit_Click" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="Edit"/>
                 </Button>
-                <Button x:Name="btnSave" Click="btnSave_Click" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button x:Name="btnSave" Click="btnSave_Click" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="ContentSave"/>
                 </Button>
-                <Button Name="btnRemove" Click="btnRemove_Click" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button Name="btnRemove" Click="btnRemove_Click" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="Delete"/>
                 </Button>
-                <Button Click="btnRefresh_Click" x:Name="btnRefresh" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button Click="btnRefresh_Click" x:Name="btnRefresh" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="Refresh"/>
                 </Button>
-                <Button x:Name="btnUndo" Click="btnUndo_Click" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button x:Name="btnUndo" Click="btnUndo_Click" VerticalAlignment="Top" >
                     <materialDesign:PackIcon Kind="Undo"/>
                 </Button>
-                <Button x:Name="btnRedo" Click="btnRedo_Click" VerticalAlignment="Top" Width="75" Height="60" Margin="0,0,0,0">
+                <Button x:Name="btnRedo" Click="btnRedo_Click" VerticalAlignment="Top">
                     <materialDesign:PackIcon Kind="Redo"/>
                 </Button>
-                <DockPanel VerticalAlignment="Top" LastChildFill="False" HorizontalAlignment="Right" Width="217" Height="60" Margin="0,0,0,-2">
-                    <TextBox materialDesign:HintAssist.Hint="Search by ID" Name="txbSearch" Padding="0 0 0 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="154" Margin="0 0 0 0" Height="34"/>
-                    <Button Name="btnSearch" Click="btnSearch_Click" Height="34" VerticalAlignment="Center" Width="58">
-                        <materialDesign:PackIcon Kind="Search"/>
-                    </Button>
-
-                </DockPanel>
+                <Separator/>
+                <TextBox materialDesign:HintAssist.Hint="Tìm theo mã nhân viên" Name="txbSearch" Padding="0 0 0 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                <Button Name="btnSearch" Click="btnSearch_Click" VerticalAlignment="Center" Padding="0">
+                    <materialDesign:PackIcon Kind="Search"/>
+                </Button>
             </ToolBar>
 
         </ToolBarTray>
-        <DataGrid x:Name="dgContent" Margin="0,65,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding NhanVienId}"/>
-                <DataGridTextColumn Header="Ho" Binding="{Binding Ho}" />
-                <DataGridTextColumn Header="Ten" Binding="{Binding Ten}" />
-                <DataGridTextColumn Header="Phai" Binding="{Binding Phai, Converter={StaticResource phaiConverter}}" />
-                <DataGridTextColumn Header="NgaySinh" Binding="{Binding NgaySinh, StringFormat=d}" />
-                <DataGridTextColumn Header="SoDienThoai" Binding="{Binding SoDienThoai}" />
-                <DataGridTextColumn Header="DiaChi" Binding="{Binding DiaChi}" />
-                <DataGridTextColumn Header="ChiNhanh" Binding="{Binding ChiNhanhId, Converter={StaticResource chiNhanhConverter}}" />
+                <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding NhanVienId}"/>
+                <DataGridTextColumn Header="Họ" Binding="{Binding Ho}" />
+                <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
+                <DataGridTextColumn Header="Giới tính" Binding="{Binding Phai, Converter={StaticResource phaiConverter}}" />
+                <DataGridTextColumn Header="Ngày sinh" Binding="{Binding NgaySinh, StringFormat=d}" />
+                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDienThoai}" />
+                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}" />
+                <DataGridTextColumn Header="Chi nhánh" Binding="{Binding ChiNhanhId, Converter={StaticResource chiNhanhConverter}}" />
             </DataGrid.Columns>
         </DataGrid>
         <DockPanel FlowDirection="RightToLeft" LastChildFill="False" Margin="562,0,8,0" Height="30" VerticalAlignment="Bottom">

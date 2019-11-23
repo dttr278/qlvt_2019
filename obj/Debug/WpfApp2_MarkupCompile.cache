@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\dttr2\source\repos\WpfApp2\WpfApp2\obj\Debug\
+D:\source\qlvt_2019\obj\Debug\
 WpfApp2
 none
 false
 DEBUG;TRACE
-C:\Users\dttr2\source\repos\WpfApp2\WpfApp2\App.xaml
-6366512015
+D:\source\qlvt_2019\App.xaml
+21348097928
 
-181180603058
-191401843905
-MessageDialog.xaml;Windown\AddNhanVienWindow.xaml;Windown\DSNhanVienControl.xaml;Windown\Kho.xaml;Windown\MainContentWindow.xaml;MainWindow.xaml;
+33-660356279
+19558318407
+Windown\AddPhieuNhap.xaml;Windown\AddHoaDon.xaml;Windown\HoaDon.xaml;Windown\PhieuNhap.xaml;Windown\AddDatHang.xaml;Windown\AddVatTu.xaml;Windown\DatHang.xaml;Windown\VatTu.xaml;Windown\AddDanhMucVatTu.xaml;Windown\DanhMucVatTu.xaml;Windown\AddNhaCungCap.xaml;Windown\NhaCungCap.xaml;Windown\AddKhachHang.xaml;Windown\KhachHang.xaml;Windown\AddKho.xaml;MessageDialog.xaml;Windown\AddNhanVienWindow.xaml;Windown\DSNhanVienControl.xaml;Windown\Kho.xaml;Windown\MainContentWindow.xaml;MainWindow.xaml;
 
 False
 

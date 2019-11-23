@@ -26,11 +26,20 @@ namespace WpfApp2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-DOH5CIJ;Initial Catalog=QLVT;Persist Security Info=True;User " +
-            "ID=sa;Password=123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-U7HEJ86K;Initial Catalog=QLVT;Persist Security Info=True;User " +
+            "ID=sa;Password=123")]
         public string QLVTConnectionString {
             get {
                 return ((string)(this["QLVTConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int PageSize {
+            get {
+                return ((int)(this["PageSize"]));
             }
         }
     }

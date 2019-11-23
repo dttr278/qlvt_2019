@@ -16,29 +16,21 @@ namespace WpfApp2
 
         public MainWindow()
         {
-           
+
 
             InitializeComponent();
-            QLVTDataSet dataSet = new QLVTDataSet();
+
+            QLVTDataSet.V_CNDataTable v_CNs = new QLVTDataSet.V_CNDataTable();
             QLVTDataSetTableAdapters.V_CNTableAdapter v_CNTableAdapter = new QLVTDataSetTableAdapters.V_CNTableAdapter();
             v_CNTableAdapter.Connection.ConnectionString = Common.getDefaultConnectionString();
-            v_CNTableAdapter.Fill(dataSet.V_CN);
-            cbxCN.ItemsSource = dataSet.V_CN;
-            Common.ChiNhanhInfo = dataSet.V_CN;
+            v_CNTableAdapter.Fill(v_CNs);
+            cbxCN.ItemsSource = v_CNs;
+            Common.ChiNhanhInfo = v_CNs;
             cbxCN.DisplayMemberPath = "Ten";
             cbxCN.SelectedValuePath = "ChiNhanhId";
-
-            
             cbxCN.SelectedIndex = 0;
-
-            QLVTDataSetTableAdapters.V_INFO_CNTableAdapter v_INFO_CNTableAdapter = new QLVTDataSetTableAdapters.V_INFO_CNTableAdapter();
-            v_INFO_CNTableAdapter.Fill(dataSet.V_INFO_CN);
-
         }
-        //private void ForceValidation()
-        //{
-        //    tbxUsername.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        //}
+
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -47,26 +39,24 @@ namespace WpfApp2
             string username = (string)tbxUsername.Text;
             string pass = (string)tbxPass.Password;
 
-            Common dBConnection = new Common();
-            dBConnection
-                .setDatabase(Common.GetDatabase0)
-                .setServer((string)Common.CurrentChiNhanh)
-                .setUserid(username)
-                .setPassword(pass);
-            Common.singleton = dBConnection;
+            Common.Database = Common.GetDatabase0;
+            Common.Server = ((string)Common.CurrentChiNhanh);
+            Common.Userid = username;
+            Common.Password = pass;
 
-            string connectionString = dBConnection.buildConnectionString();
+            string connectionString = Common.buildConnectionString();
             try
             {
                 if (Common.IsServerConnected(connectionString))
                 {
                     this.Hide();
+                    Common.LoginChiNhanhName = cbxCN.Text;
                     Common.connection = new SqlConnection(connectionString);
                     MainContentWindow.Signleton.cbxCN.ItemsSource = this.cbxCN.ItemsSource;
                     MainContentWindow.Signleton.cbxCN.SelectedValuePath = this.cbxCN.SelectedValuePath;
                     MainContentWindow.Signleton.cbxCN.DisplayMemberPath = this.cbxCN.DisplayMemberPath;
                     MainContentWindow.Signleton.cbxCN.SelectedIndex = this.cbxCN.SelectedIndex;
-                    MainContentWindow.Signleton.cbxCN.SelectionChanged += cbxCN_SelectionChanged;
+
                     MainContentWindow.Signleton.Show();
 
                     MainContentWindow.Signleton.Closed += (o, ev) => { System.Windows.Application.Current.Shutdown(); };
@@ -94,15 +84,13 @@ namespace WpfApp2
             string sv = (string)rows[0]["subscriber_server"];
             Common.CurrentChiNhanh = sv;
             Common.CurrentChiNhanhId = cbxCN.SelectedValue;
-            Common dBConnection = new Common();
-            dBConnection
-                .setDatabase(Common.GetDatabase0)
-                .setServer((string)Common.CurrentChiNhanh)
-                .setUserid(Common.GetUserid0)
-                .setPassword(Common.GetPassword0);
-            Common.singleton = dBConnection;
+           
+            Common.Database = (Common.GetDatabase0);
+            Common.Server = ((string)Common.CurrentChiNhanh);
+            Common.Userid = (Common.GetUserid0);
+            Common.Password = (Common.GetPassword0);
 
-            string connectionString = dBConnection.buildConnectionString();
+            string connectionString = Common.buildConnectionString();
             try
             {
                 if (Common.IsServerConnected(connectionString))
@@ -114,7 +102,8 @@ namespace WpfApp2
                     Common.ShowMessage("Lỗi kết nối", "MainDialog");
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Common.ShowMessage("Lỗi kết nối", "MainDialog");
             }

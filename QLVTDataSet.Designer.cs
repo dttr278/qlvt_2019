@@ -66,8 +66,6 @@ namespace WpfApp2 {
         
         private global::System.Data.DataRelation relationFK__CTPhieuNh__MatHa__6B24EA82;
         
-        private global::System.Data.DataRelation relationFK__CTPhieuNh__Phieu__6C190EBB;
-        
         private global::System.Data.DataRelation relationFK__DatHang__NhaCung__6D0D32F4;
         
         private global::System.Data.DataRelation relationFK__DatHang__NhanVie__6E01572D;
@@ -91,6 +89,8 @@ namespace WpfApp2 {
         private global::System.Data.DataRelation relationFK__PhieuNhap__KhoId__76969D2E;
         
         private global::System.Data.DataRelation relationFK__PhieuNhap__NhanV__778AC167;
+        
+        private global::System.Data.DataRelation relationFK__CTPhieuNh__Phieu__4CA06362;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -595,7 +595,6 @@ namespace WpfApp2 {
             this.relationFK__CTHoaDon__HoaDon__693CA210 = this.Relations["FK__CTHoaDon__HoaDon__693CA210"];
             this.relationFK__CTHoaDon__MatHan__6A30C649 = this.Relations["FK__CTHoaDon__MatHan__6A30C649"];
             this.relationFK__CTPhieuNh__MatHa__6B24EA82 = this.Relations["FK__CTPhieuNh__MatHa__6B24EA82"];
-            this.relationFK__CTPhieuNh__Phieu__6C190EBB = this.Relations["FK__CTPhieuNh__Phieu__6C190EBB"];
             this.relationFK__DatHang__NhaCung__6D0D32F4 = this.Relations["FK__DatHang__NhaCung__6D0D32F4"];
             this.relationFK__DatHang__NhanVie__6E01572D = this.Relations["FK__DatHang__NhanVie__6E01572D"];
             this.relationFK__HoaDon__KhachHan__6EF57B66 = this.Relations["FK__HoaDon__KhachHan__6EF57B66"];
@@ -608,6 +607,7 @@ namespace WpfApp2 {
             this.relationFK__PhieuNhap__DatHa__75A278F5 = this.Relations["FK__PhieuNhap__DatHa__75A278F5"];
             this.relationFK__PhieuNhap__KhoId__76969D2E = this.Relations["FK__PhieuNhap__KhoId__76969D2E"];
             this.relationFK__PhieuNhap__NhanV__778AC167 = this.Relations["FK__PhieuNhap__NhanV__778AC167"];
+            this.relationFK__CTPhieuNh__Phieu__4CA06362 = this.Relations["FK__CTPhieuNh__Phieu__4CA06362"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -670,10 +670,6 @@ namespace WpfApp2 {
                         this.tableMatHang.MatHangIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTPhieuNhap.MatHangIdColumn}, false);
             this.Relations.Add(this.relationFK__CTPhieuNh__MatHa__6B24EA82);
-            this.relationFK__CTPhieuNh__Phieu__6C190EBB = new global::System.Data.DataRelation("FK__CTPhieuNh__Phieu__6C190EBB", new global::System.Data.DataColumn[] {
-                        this.tablePhieuNhap.PhieuNhapIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTPhieuNhap.PhieuNhapIdColumn}, false);
-            this.Relations.Add(this.relationFK__CTPhieuNh__Phieu__6C190EBB);
             this.relationFK__DatHang__NhaCung__6D0D32F4 = new global::System.Data.DataRelation("FK__DatHang__NhaCung__6D0D32F4", new global::System.Data.DataColumn[] {
                         this.tableNhaCungCap.NhaCungCapIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDatHang.NhaCungCapIdColumn}, false);
@@ -722,6 +718,10 @@ namespace WpfApp2 {
                         this.tableNhanVien.NhanVienIdColumn}, new global::System.Data.DataColumn[] {
                         this.tablePhieuNhap.NhanVienIdColumn}, false);
             this.Relations.Add(this.relationFK__PhieuNhap__NhanV__778AC167);
+            this.relationFK__CTPhieuNh__Phieu__4CA06362 = new global::System.Data.DataRelation("FK__CTPhieuNh__Phieu__4CA06362", new global::System.Data.DataColumn[] {
+                        this.tablePhieuNhap.DatHangIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTPhieuNhap.PhieuNhapIdColumn}, false);
+            this.Relations.Add(this.relationFK__CTPhieuNh__Phieu__4CA06362);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1203,8 +1203,6 @@ namespace WpfApp2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CTDatHangDataTable : global::System.Data.TypedTableBase<CTDatHangRow> {
             
-            private global::System.Data.DataColumn columnCTDatHangId;
-            
             private global::System.Data.DataColumn columnDatHangId;
             
             private global::System.Data.DataColumn columnMatHangId;
@@ -1244,14 +1242,6 @@ namespace WpfApp2 {
             protected CTDatHangDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CTDatHangIdColumn {
-                get {
-                    return this.columnCTDatHangId;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1323,19 +1313,18 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTDatHangRow AddCTDatHangRow(long CTDatHangId, DatHangRow parentDatHangRowByFK__CTDatHang__DatHa__6754599E, MatHangRow parentMatHangRowByFK__CTDatHang__MatHa__68487DD7, int SoLuong, int DonGia) {
+            public CTDatHangRow AddCTDatHangRow(DatHangRow parentDatHangRowByFK__CTDatHang__DatHa__6754599E, MatHangRow parentMatHangRowByFK__CTDatHang__MatHa__68487DD7, int SoLuong, int DonGia) {
                 CTDatHangRow rowCTDatHangRow = ((CTDatHangRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CTDatHangId,
                         null,
                         null,
                         SoLuong,
                         DonGia};
                 if ((parentDatHangRowByFK__CTDatHang__DatHa__6754599E != null)) {
-                    columnValuesArray[1] = parentDatHangRowByFK__CTDatHang__DatHa__6754599E[0];
+                    columnValuesArray[0] = parentDatHangRowByFK__CTDatHang__DatHa__6754599E[0];
                 }
                 if ((parentMatHangRowByFK__CTDatHang__MatHa__68487DD7 != null)) {
-                    columnValuesArray[2] = parentMatHangRowByFK__CTDatHang__MatHa__68487DD7[0];
+                    columnValuesArray[1] = parentMatHangRowByFK__CTDatHang__MatHa__68487DD7[0];
                 }
                 rowCTDatHangRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCTDatHangRow);
@@ -1344,9 +1333,10 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTDatHangRow FindByCTDatHangId(long CTDatHangId) {
+            public CTDatHangRow FindByDatHangIdMatHangId(long DatHangId, long MatHangId) {
                 return ((CTDatHangRow)(this.Rows.Find(new object[] {
-                            CTDatHangId})));
+                            DatHangId,
+                            MatHangId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1366,7 +1356,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnCTDatHangId = base.Columns["CTDatHangId"];
                 this.columnDatHangId = base.Columns["DatHangId"];
                 this.columnMatHangId = base.Columns["MatHangId"];
                 this.columnSoLuong = base.Columns["SoLuong"];
@@ -1376,8 +1365,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnCTDatHangId = new global::System.Data.DataColumn("CTDatHangId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCTDatHangId);
                 this.columnDatHangId = new global::System.Data.DataColumn("DatHangId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDatHangId);
                 this.columnMatHangId = new global::System.Data.DataColumn("MatHangId", typeof(long), null, global::System.Data.MappingType.Element);
@@ -1387,9 +1374,8 @@ namespace WpfApp2 {
                 this.columnDonGia = new global::System.Data.DataColumn("DonGia", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonGia);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCTDatHangId}, true));
-                this.columnCTDatHangId.AllowDBNull = false;
-                this.columnCTDatHangId.Unique = true;
+                                this.columnDatHangId,
+                                this.columnMatHangId}, true));
                 this.columnDatHangId.AllowDBNull = false;
                 this.columnMatHangId.AllowDBNull = false;
                 this.columnSoLuong.AllowDBNull = false;
@@ -1527,8 +1513,6 @@ namespace WpfApp2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CTHoaDonDataTable : global::System.Data.TypedTableBase<CTHoaDonRow> {
             
-            private global::System.Data.DataColumn columnCTHoaDonId;
-            
             private global::System.Data.DataColumn columnHoaDonId;
             
             private global::System.Data.DataColumn columnMatHangId;
@@ -1568,14 +1552,6 @@ namespace WpfApp2 {
             protected CTHoaDonDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CTHoaDonIdColumn {
-                get {
-                    return this.columnCTHoaDonId;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1647,19 +1623,18 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTHoaDonRow AddCTHoaDonRow(long CTHoaDonId, HoaDonRow parentHoaDonRowByFK__CTHoaDon__HoaDon__693CA210, MatHangRow parentMatHangRowByFK__CTHoaDon__MatHan__6A30C649, int SoLuong, int DonGia) {
+            public CTHoaDonRow AddCTHoaDonRow(HoaDonRow parentHoaDonRowByFK__CTHoaDon__HoaDon__693CA210, MatHangRow parentMatHangRowByFK__CTHoaDon__MatHan__6A30C649, int SoLuong, int DonGia) {
                 CTHoaDonRow rowCTHoaDonRow = ((CTHoaDonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CTHoaDonId,
                         null,
                         null,
                         SoLuong,
                         DonGia};
                 if ((parentHoaDonRowByFK__CTHoaDon__HoaDon__693CA210 != null)) {
-                    columnValuesArray[1] = parentHoaDonRowByFK__CTHoaDon__HoaDon__693CA210[0];
+                    columnValuesArray[0] = parentHoaDonRowByFK__CTHoaDon__HoaDon__693CA210[0];
                 }
                 if ((parentMatHangRowByFK__CTHoaDon__MatHan__6A30C649 != null)) {
-                    columnValuesArray[2] = parentMatHangRowByFK__CTHoaDon__MatHan__6A30C649[0];
+                    columnValuesArray[1] = parentMatHangRowByFK__CTHoaDon__MatHan__6A30C649[0];
                 }
                 rowCTHoaDonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCTHoaDonRow);
@@ -1668,9 +1643,10 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTHoaDonRow FindByCTHoaDonId(long CTHoaDonId) {
+            public CTHoaDonRow FindByHoaDonIdMatHangId(long HoaDonId, long MatHangId) {
                 return ((CTHoaDonRow)(this.Rows.Find(new object[] {
-                            CTHoaDonId})));
+                            HoaDonId,
+                            MatHangId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1690,7 +1666,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnCTHoaDonId = base.Columns["CTHoaDonId"];
                 this.columnHoaDonId = base.Columns["HoaDonId"];
                 this.columnMatHangId = base.Columns["MatHangId"];
                 this.columnSoLuong = base.Columns["SoLuong"];
@@ -1700,8 +1675,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnCTHoaDonId = new global::System.Data.DataColumn("CTHoaDonId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCTHoaDonId);
                 this.columnHoaDonId = new global::System.Data.DataColumn("HoaDonId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoaDonId);
                 this.columnMatHangId = new global::System.Data.DataColumn("MatHangId", typeof(long), null, global::System.Data.MappingType.Element);
@@ -1711,9 +1684,8 @@ namespace WpfApp2 {
                 this.columnDonGia = new global::System.Data.DataColumn("DonGia", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonGia);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCTHoaDonId}, true));
-                this.columnCTHoaDonId.AllowDBNull = false;
-                this.columnCTHoaDonId.Unique = true;
+                                this.columnHoaDonId,
+                                this.columnMatHangId}, true));
                 this.columnHoaDonId.AllowDBNull = false;
                 this.columnMatHangId.AllowDBNull = false;
                 this.columnSoLuong.AllowDBNull = false;
@@ -1851,8 +1823,6 @@ namespace WpfApp2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CTPhieuNhapDataTable : global::System.Data.TypedTableBase<CTPhieuNhapRow> {
             
-            private global::System.Data.DataColumn columnCTPhieuNhapId;
-            
             private global::System.Data.DataColumn columnPhieuNhapId;
             
             private global::System.Data.DataColumn columnMatHangId;
@@ -1892,14 +1862,6 @@ namespace WpfApp2 {
             protected CTPhieuNhapDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CTPhieuNhapIdColumn {
-                get {
-                    return this.columnCTPhieuNhapId;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1971,19 +1933,18 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTPhieuNhapRow AddCTPhieuNhapRow(long CTPhieuNhapId, PhieuNhapRow parentPhieuNhapRowByFK__CTPhieuNh__Phieu__6C190EBB, MatHangRow parentMatHangRowByFK__CTPhieuNh__MatHa__6B24EA82, int SoLuong, int DonGia) {
+            public CTPhieuNhapRow AddCTPhieuNhapRow(PhieuNhapRow parentPhieuNhapRowByFK__CTPhieuNh__Phieu__4CA06362, MatHangRow parentMatHangRowByFK__CTPhieuNh__MatHa__6B24EA82, int SoLuong, int DonGia) {
                 CTPhieuNhapRow rowCTPhieuNhapRow = ((CTPhieuNhapRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CTPhieuNhapId,
                         null,
                         null,
                         SoLuong,
                         DonGia};
-                if ((parentPhieuNhapRowByFK__CTPhieuNh__Phieu__6C190EBB != null)) {
-                    columnValuesArray[1] = parentPhieuNhapRowByFK__CTPhieuNh__Phieu__6C190EBB[0];
+                if ((parentPhieuNhapRowByFK__CTPhieuNh__Phieu__4CA06362 != null)) {
+                    columnValuesArray[0] = parentPhieuNhapRowByFK__CTPhieuNh__Phieu__4CA06362[3];
                 }
                 if ((parentMatHangRowByFK__CTPhieuNh__MatHa__6B24EA82 != null)) {
-                    columnValuesArray[2] = parentMatHangRowByFK__CTPhieuNh__MatHa__6B24EA82[0];
+                    columnValuesArray[1] = parentMatHangRowByFK__CTPhieuNh__MatHa__6B24EA82[0];
                 }
                 rowCTPhieuNhapRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCTPhieuNhapRow);
@@ -1992,9 +1953,10 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CTPhieuNhapRow FindByCTPhieuNhapId(long CTPhieuNhapId) {
+            public CTPhieuNhapRow FindByPhieuNhapIdMatHangId(long PhieuNhapId, long MatHangId) {
                 return ((CTPhieuNhapRow)(this.Rows.Find(new object[] {
-                            CTPhieuNhapId})));
+                            PhieuNhapId,
+                            MatHangId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2014,7 +1976,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnCTPhieuNhapId = base.Columns["CTPhieuNhapId"];
                 this.columnPhieuNhapId = base.Columns["PhieuNhapId"];
                 this.columnMatHangId = base.Columns["MatHangId"];
                 this.columnSoLuong = base.Columns["SoLuong"];
@@ -2024,8 +1985,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnCTPhieuNhapId = new global::System.Data.DataColumn("CTPhieuNhapId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCTPhieuNhapId);
                 this.columnPhieuNhapId = new global::System.Data.DataColumn("PhieuNhapId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhieuNhapId);
                 this.columnMatHangId = new global::System.Data.DataColumn("MatHangId", typeof(long), null, global::System.Data.MappingType.Element);
@@ -2035,9 +1994,8 @@ namespace WpfApp2 {
                 this.columnDonGia = new global::System.Data.DataColumn("DonGia", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonGia);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCTPhieuNhapId}, true));
-                this.columnCTPhieuNhapId.AllowDBNull = false;
-                this.columnCTPhieuNhapId.Unique = true;
+                                this.columnPhieuNhapId,
+                                this.columnMatHangId}, true));
                 this.columnPhieuNhapId.AllowDBNull = false;
                 this.columnMatHangId.AllowDBNull = false;
                 this.columnSoLuong.AllowDBNull = false;
@@ -2346,6 +2304,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnThoiGian);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDatHangId}, true));
+                this.columnDatHangId.AutoIncrementSeed = -1;
+                this.columnDatHangId.AutoIncrementStep = -1;
                 this.columnDatHangId.AllowDBNull = false;
                 this.columnDatHangId.Unique = true;
                 this.columnNhanVienId.AllowDBNull = false;
@@ -2672,6 +2632,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnThoiGian);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnHoaDonId}, true));
+                this.columnHoaDonId.AutoIncrementSeed = -1;
+                this.columnHoaDonId.AutoIncrementStep = -1;
                 this.columnHoaDonId.AllowDBNull = false;
                 this.columnHoaDonId.Unique = true;
                 this.columnKhoId.AllowDBNull = false;
@@ -3007,6 +2969,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnChiNhanhId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnKhachHangId}, true));
+                this.columnKhachHangId.AutoIncrementSeed = -1;
+                this.columnKhachHangId.AutoIncrementStep = -1;
                 this.columnKhachHangId.AllowDBNull = false;
                 this.columnKhachHangId.Unique = true;
                 this.columnTen.AllowDBNull = false;
@@ -3319,6 +3283,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnChiNhanhId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnKhoId}, true));
+                this.columnKhoId.AutoIncrementSeed = -1;
+                this.columnKhoId.AutoIncrementStep = -1;
                 this.columnKhoId.AllowDBNull = false;
                 this.columnKhoId.Unique = true;
                 this.columnTen.AllowDBNull = false;
@@ -3595,6 +3561,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnTen);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnLoaiHangId}, true));
+                this.columnLoaiHangId.AutoIncrementSeed = -1;
+                this.columnLoaiHangId.AutoIncrementStep = -1;
                 this.columnLoaiHangId.AllowDBNull = false;
                 this.columnLoaiHangId.Unique = true;
                 this.columnTen.AllowDBNull = false;
@@ -3900,6 +3868,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnLoaiHangId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMatHangId}, true));
+                this.columnMatHangId.AutoIncrementSeed = -1;
+                this.columnMatHangId.AutoIncrementStep = -1;
                 this.columnMatHangId.AllowDBNull = false;
                 this.columnMatHangId.Unique = true;
                 this.columnTen.AllowDBNull = false;
@@ -4204,6 +4174,8 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnSoDienThoai);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNhaCungCapId}, true));
+                this.columnNhaCungCapId.AutoIncrementSeed = -1;
+                this.columnNhaCungCapId.AutoIncrementStep = -1;
                 this.columnNhaCungCapId.AllowDBNull = false;
                 this.columnNhaCungCapId.Unique = true;
                 this.columnTen.AllowDBNull = false;
@@ -4726,8 +4698,6 @@ namespace WpfApp2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PhieuNhapDataTable : global::System.Data.TypedTableBase<PhieuNhapRow> {
             
-            private global::System.Data.DataColumn columnPhieuNhapId;
-            
             private global::System.Data.DataColumn columnKhoId;
             
             private global::System.Data.DataColumn columnNhanVienId;
@@ -4767,14 +4737,6 @@ namespace WpfApp2 {
             protected PhieuNhapDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PhieuNhapIdColumn {
-                get {
-                    return this.columnPhieuNhapId;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4846,22 +4808,21 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PhieuNhapRow AddPhieuNhapRow(long PhieuNhapId, KhoRow parentKhoRowByFK__PhieuNhap__KhoId__76969D2E, NhanVienRow parentNhanVienRowByFK__PhieuNhap__NhanV__778AC167, System.DateTime ThoiGian, DatHangRow parentDatHangRowByFK__PhieuNhap__DatHa__75A278F5) {
+            public PhieuNhapRow AddPhieuNhapRow(KhoRow parentKhoRowByFK__PhieuNhap__KhoId__76969D2E, NhanVienRow parentNhanVienRowByFK__PhieuNhap__NhanV__778AC167, System.DateTime ThoiGian, DatHangRow parentDatHangRowByFK__PhieuNhap__DatHa__75A278F5) {
                 PhieuNhapRow rowPhieuNhapRow = ((PhieuNhapRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PhieuNhapId,
                         null,
                         null,
                         ThoiGian,
                         null};
                 if ((parentKhoRowByFK__PhieuNhap__KhoId__76969D2E != null)) {
-                    columnValuesArray[1] = parentKhoRowByFK__PhieuNhap__KhoId__76969D2E[0];
+                    columnValuesArray[0] = parentKhoRowByFK__PhieuNhap__KhoId__76969D2E[0];
                 }
                 if ((parentNhanVienRowByFK__PhieuNhap__NhanV__778AC167 != null)) {
-                    columnValuesArray[2] = parentNhanVienRowByFK__PhieuNhap__NhanV__778AC167[0];
+                    columnValuesArray[1] = parentNhanVienRowByFK__PhieuNhap__NhanV__778AC167[0];
                 }
                 if ((parentDatHangRowByFK__PhieuNhap__DatHa__75A278F5 != null)) {
-                    columnValuesArray[4] = parentDatHangRowByFK__PhieuNhap__DatHa__75A278F5[0];
+                    columnValuesArray[3] = parentDatHangRowByFK__PhieuNhap__DatHa__75A278F5[0];
                 }
                 rowPhieuNhapRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPhieuNhapRow);
@@ -4870,9 +4831,9 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PhieuNhapRow FindByPhieuNhapId(long PhieuNhapId) {
+            public PhieuNhapRow FindByDatHangId(long DatHangId) {
                 return ((PhieuNhapRow)(this.Rows.Find(new object[] {
-                            PhieuNhapId})));
+                            DatHangId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4892,7 +4853,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnPhieuNhapId = base.Columns["PhieuNhapId"];
                 this.columnKhoId = base.Columns["KhoId"];
                 this.columnNhanVienId = base.Columns["NhanVienId"];
                 this.columnThoiGian = base.Columns["ThoiGian"];
@@ -4902,8 +4862,6 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnPhieuNhapId = new global::System.Data.DataColumn("PhieuNhapId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPhieuNhapId);
                 this.columnKhoId = new global::System.Data.DataColumn("KhoId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKhoId);
                 this.columnNhanVienId = new global::System.Data.DataColumn("NhanVienId", typeof(long), null, global::System.Data.MappingType.Element);
@@ -4913,13 +4871,12 @@ namespace WpfApp2 {
                 this.columnDatHangId = new global::System.Data.DataColumn("DatHangId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDatHangId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnPhieuNhapId}, true));
-                this.columnPhieuNhapId.AllowDBNull = false;
-                this.columnPhieuNhapId.Unique = true;
+                                this.columnDatHangId}, true));
                 this.columnKhoId.AllowDBNull = false;
                 this.columnNhanVienId.AllowDBNull = false;
                 this.columnThoiGian.AllowDBNull = false;
                 this.columnDatHangId.AllowDBNull = false;
+                this.columnDatHangId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5345,8 +5302,6 @@ namespace WpfApp2 {
             
             private global::System.Data.DataColumn columnTen;
             
-            private global::System.Data.DataColumn columnrowguid;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public V_INFO_CNDataTable() {
@@ -5398,14 +5353,6 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn rowguidColumn {
-                get {
-                    return this.columnrowguid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5441,12 +5388,11 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_INFO_CNRow AddV_INFO_CNRow(int ChiNhanhId, string Ten, System.Guid rowguid) {
+            public V_INFO_CNRow AddV_INFO_CNRow(int ChiNhanhId, string Ten) {
                 V_INFO_CNRow rowV_INFO_CNRow = ((V_INFO_CNRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ChiNhanhId,
-                        Ten,
-                        rowguid};
+                        Ten};
                 rowV_INFO_CNRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowV_INFO_CNRow);
                 return rowV_INFO_CNRow;
@@ -5478,7 +5424,6 @@ namespace WpfApp2 {
             internal void InitVars() {
                 this.columnChiNhanhId = base.Columns["ChiNhanhId"];
                 this.columnTen = base.Columns["Ten"];
-                this.columnrowguid = base.Columns["rowguid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5488,14 +5433,11 @@ namespace WpfApp2 {
                 base.Columns.Add(this.columnChiNhanhId);
                 this.columnTen = new global::System.Data.DataColumn("Ten", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTen);
-                this.columnrowguid = new global::System.Data.DataColumn("rowguid", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrowguid);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnChiNhanhId}, true));
                 this.columnChiNhanhId.AllowDBNull = false;
                 this.columnChiNhanhId.Unique = true;
                 this.columnTen.MaxLength = 50;
-                this.columnrowguid.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6072,17 +6014,6 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long CTDatHangId {
-                get {
-                    return ((long)(this[this.tableCTDatHang.CTDatHangIdColumn]));
-                }
-                set {
-                    this[this.tableCTDatHang.CTDatHangIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public long DatHangId {
                 get {
                     return ((long)(this[this.tableCTDatHang.DatHangIdColumn]));
@@ -6160,17 +6091,6 @@ namespace WpfApp2 {
             internal CTHoaDonRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableCTHoaDon = ((CTHoaDonDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long CTHoaDonId {
-                get {
-                    return ((long)(this[this.tableCTHoaDon.CTHoaDonIdColumn]));
-                }
-                set {
-                    this[this.tableCTHoaDon.CTHoaDonIdColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6256,17 +6176,6 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long CTPhieuNhapId {
-                get {
-                    return ((long)(this[this.tableCTPhieuNhap.CTPhieuNhapIdColumn]));
-                }
-                set {
-                    this[this.tableCTPhieuNhap.CTPhieuNhapIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public long PhieuNhapId {
                 get {
                     return ((long)(this[this.tableCTPhieuNhap.PhieuNhapIdColumn]));
@@ -6324,10 +6233,10 @@ namespace WpfApp2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PhieuNhapRow PhieuNhapRow {
                 get {
-                    return ((PhieuNhapRow)(this.GetParentRow(this.Table.ParentRelations["FK__CTPhieuNh__Phieu__6C190EBB"])));
+                    return ((PhieuNhapRow)(this.GetParentRow(this.Table.ParentRelations["FK__CTPhieuNh__Phieu__4CA06362"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__CTPhieuNh__Phieu__6C190EBB"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__CTPhieuNh__Phieu__4CA06362"]);
                 }
             }
         }
@@ -7275,17 +7184,6 @@ namespace WpfApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long PhieuNhapId {
-                get {
-                    return ((long)(this[this.tablePhieuNhap.PhieuNhapIdColumn]));
-                }
-                set {
-                    this[this.tablePhieuNhap.PhieuNhapIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public long KhoId {
                 get {
                     return ((long)(this[this.tablePhieuNhap.KhoIdColumn]));
@@ -7364,11 +7262,11 @@ namespace WpfApp2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CTPhieuNhapRow[] GetCTPhieuNhapRows() {
-                if ((this.Table.ChildRelations["FK__CTPhieuNh__Phieu__6C190EBB"] == null)) {
+                if ((this.Table.ChildRelations["FK__CTPhieuNh__Phieu__4CA06362"] == null)) {
                     return new CTPhieuNhapRow[0];
                 }
                 else {
-                    return ((CTPhieuNhapRow[])(base.GetChildRows(this.Table.ChildRelations["FK__CTPhieuNh__Phieu__6C190EBB"])));
+                    return ((CTPhieuNhapRow[])(base.GetChildRows(this.Table.ChildRelations["FK__CTPhieuNh__Phieu__4CA06362"])));
                 }
             }
         }
@@ -7493,17 +7391,6 @@ namespace WpfApp2 {
                 }
                 set {
                     this[this.tableV_INFO_CN.TenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.Guid rowguid {
-                get {
-                    return ((global::System.Guid)(this[this.tableV_INFO_CN.rowguidColumn]));
-                }
-                set {
-                    this[this.tableV_INFO_CN.rowguidColumn] = value;
                 }
             }
             
@@ -8693,7 +8580,6 @@ namespace WpfApp2.QLVTDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CTDatHang";
-            tableMapping.ColumnMappings.Add("CTDatHangId", "CTDatHangId");
             tableMapping.ColumnMappings.Add("DatHangId", "DatHangId");
             tableMapping.ColumnMappings.Add("MatHangId", "MatHangId");
             tableMapping.ColumnMappings.Add("SoLuong", "SoLuong");
@@ -8701,36 +8587,34 @@ namespace WpfApp2.QLVTDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CTDatHang] WHERE (([CTDatHangId] = @Original_CTDatHangId) AND " +
-                "([DatHangId] = @Original_DatHangId) AND ([MatHangId] = @Original_MatHangId) AND " +
-                "([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [CTDatHang] WHERE (([DatHangId] = @Original_DatHangId) AND ([MatHangI" +
+                "d] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @O" +
+                "riginal_DonGia))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTDatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTDatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CTDatHang] ([CTDatHangId], [DatHangId], [MatHangId], [SoLuong], [DonGia]) VALUES (@CTDatHangId, @DatHangId, @MatHangId, @SoLuong, @DonGia);
-SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (CTDatHangId = @CTDatHangId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [CTDatHang] ([DatHangId], [MatHangId], [SoLuong], [DonGia]) VALUES (@" +
+                "DatHangId, @MatHangId, @SoLuong, @DonGia);\r\nSELECT DatHangId, MatHangId, SoLuong" +
+                ", DonGia FROM CTDatHang WHERE (DatHangId = @DatHangId) AND (MatHangId = @MatHang" +
+                "Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTDatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTDatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CTDatHang] SET [CTDatHangId] = @CTDatHangId, [DatHangId] = @DatHangId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([CTDatHangId] = @Original_CTDatHangId) AND ([DatHangId] = @Original_DatHangId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
-SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (CTDatHangId = @CTDatHangId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [CTDatHang] SET [DatHangId] = @DatHangId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([DatHangId] = @Original_DatHangId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
+SELECT DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (DatHangId = @DatHangId) AND (MatHangId = @MatHangId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTDatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTDatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTDatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTDatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8750,7 +8634,7 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM dbo.CTDatHang";
+            this._commandCollection[0].CommandText = "SELECT DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8811,12 +8695,11 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_CTDatHangId, long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_CTDatHangId));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_DatHangId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_MatHangId));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_SoLuong));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_DonGia));
+        public virtual int Delete(long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_DatHangId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_MatHangId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SoLuong));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8837,12 +8720,11 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long CTDatHangId, long DatHangId, long MatHangId, int SoLuong, int DonGia) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(CTDatHangId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(DatHangId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(DonGia));
+        public virtual int Insert(long DatHangId, long MatHangId, int SoLuong, int DonGia) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(DatHangId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8863,17 +8745,15 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long CTDatHangId, long DatHangId, long MatHangId, int SoLuong, int DonGia, long Original_CTDatHangId, long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(CTDatHangId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(DatHangId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(DonGia));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_CTDatHangId));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_DatHangId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_MatHangId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_SoLuong));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_DonGia));
+        public virtual int Update(long DatHangId, long MatHangId, int SoLuong, int DonGia, long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(DatHangId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(DonGia));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_DatHangId));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_MatHangId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SoLuong));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8894,8 +8774,8 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long DatHangId, long MatHangId, int SoLuong, int DonGia, long Original_CTDatHangId, long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            return this.Update(Original_CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia, Original_CTDatHangId, Original_DatHangId, Original_MatHangId, Original_SoLuong, Original_DonGia);
+        public virtual int Update(int SoLuong, int DonGia, long Original_DatHangId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            return this.Update(Original_DatHangId, Original_MatHangId, SoLuong, DonGia, Original_DatHangId, Original_MatHangId, Original_SoLuong, Original_DonGia);
         }
     }
     
@@ -9020,7 +8900,6 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CTHoaDon";
-            tableMapping.ColumnMappings.Add("CTHoaDonId", "CTHoaDonId");
             tableMapping.ColumnMappings.Add("HoaDonId", "HoaDonId");
             tableMapping.ColumnMappings.Add("MatHangId", "MatHangId");
             tableMapping.ColumnMappings.Add("SoLuong", "SoLuong");
@@ -9028,36 +8907,33 @@ SELECT CTDatHangId, DatHangId, MatHangId, SoLuong, DonGia FROM CTDatHang WHERE (
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CTHoaDon] WHERE (([CTHoaDonId] = @Original_CTHoaDonId) AND ([H" +
-                "oaDonId] = @Original_HoaDonId) AND ([MatHangId] = @Original_MatHangId) AND ([SoL" +
-                "uong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [CTHoaDon] WHERE (([HoaDonId] = @Original_HoaDonId) AND ([MatHangId] " +
+                "= @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Orig" +
+                "inal_DonGia))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTHoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTHoaDonId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoaDonId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CTHoaDon] ([CTHoaDonId], [HoaDonId], [MatHangId], [SoLuong], [DonGia]) VALUES (@CTHoaDonId, @HoaDonId, @MatHangId, @SoLuong, @DonGia);
-SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTHoaDonId = @CTHoaDonId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [CTHoaDon] ([HoaDonId], [MatHangId], [SoLuong], [DonGia]) VALUES (@Ho" +
+                "aDonId, @MatHangId, @SoLuong, @DonGia);\r\nSELECT HoaDonId, MatHangId, SoLuong, Do" +
+                "nGia FROM CTHoaDon WHERE (HoaDonId = @HoaDonId) AND (MatHangId = @MatHangId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTHoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTHoaDonId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoaDonId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CTHoaDon] SET [CTHoaDonId] = @CTHoaDonId, [HoaDonId] = @HoaDonId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([CTHoaDonId] = @Original_CTHoaDonId) AND ([HoaDonId] = @Original_HoaDonId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
-SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTHoaDonId = @CTHoaDonId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [CTHoaDon] SET [HoaDonId] = @HoaDonId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([HoaDonId] = @Original_HoaDonId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
+SELECT HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (HoaDonId = @HoaDonId) AND (MatHangId = @MatHangId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTHoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTHoaDonId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoaDonId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTHoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTHoaDonId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HoaDonId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoaDonId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9077,7 +8953,7 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM dbo.CTHoaDon";
+            this._commandCollection[0].CommandText = "SELECT HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9138,12 +9014,11 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_CTHoaDonId, long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_CTHoaDonId));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_HoaDonId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_MatHangId));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_SoLuong));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_DonGia));
+        public virtual int Delete(long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_HoaDonId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_MatHangId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SoLuong));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9164,12 +9039,11 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long CTHoaDonId, long HoaDonId, long MatHangId, int SoLuong, int DonGia) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(CTHoaDonId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(HoaDonId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(DonGia));
+        public virtual int Insert(long HoaDonId, long MatHangId, int SoLuong, int DonGia) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(HoaDonId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9190,17 +9064,15 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long CTHoaDonId, long HoaDonId, long MatHangId, int SoLuong, int DonGia, long Original_CTHoaDonId, long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(CTHoaDonId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(HoaDonId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(DonGia));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_CTHoaDonId));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_HoaDonId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_MatHangId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_SoLuong));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_DonGia));
+        public virtual int Update(long HoaDonId, long MatHangId, int SoLuong, int DonGia, long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(HoaDonId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(DonGia));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_HoaDonId));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_MatHangId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SoLuong));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9221,8 +9093,8 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long HoaDonId, long MatHangId, int SoLuong, int DonGia, long Original_CTHoaDonId, long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            return this.Update(Original_CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia, Original_CTHoaDonId, Original_HoaDonId, Original_MatHangId, Original_SoLuong, Original_DonGia);
+        public virtual int Update(int SoLuong, int DonGia, long Original_HoaDonId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            return this.Update(Original_HoaDonId, Original_MatHangId, SoLuong, DonGia, Original_HoaDonId, Original_MatHangId, Original_SoLuong, Original_DonGia);
         }
     }
     
@@ -9347,7 +9219,6 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CTPhieuNhap";
-            tableMapping.ColumnMappings.Add("CTPhieuNhapId", "CTPhieuNhapId");
             tableMapping.ColumnMappings.Add("PhieuNhapId", "PhieuNhapId");
             tableMapping.ColumnMappings.Add("MatHangId", "MatHangId");
             tableMapping.ColumnMappings.Add("SoLuong", "SoLuong");
@@ -9355,36 +9226,32 @@ SELECT CTHoaDonId, HoaDonId, MatHangId, SoLuong, DonGia FROM CTHoaDon WHERE (CTH
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CTPhieuNhap] WHERE (([CTPhieuNhapId] = @Original_CTPhieuNhapId" +
-                ") AND ([PhieuNhapId] = @Original_PhieuNhapId) AND ([MatHangId] = @Original_MatHa" +
-                "ngId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [CTPhieuNhap] WHERE (([PhieuNhapId] = @Original_PhieuNhapId) AND ([Ma" +
+                "tHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia" +
+                "] = @Original_DonGia))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTPhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTPhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CTPhieuNhap] ([CTPhieuNhapId], [PhieuNhapId], [MatHangId], [SoLuong], [DonGia]) VALUES (@CTPhieuNhapId, @PhieuNhapId, @MatHangId, @SoLuong, @DonGia);
-SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap WHERE (CTPhieuNhapId = @CTPhieuNhapId)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [CTPhieuNhap] ([PhieuNhapId], [MatHangId], [SoLuong], [DonGia]) VALUES (@PhieuNhapId, @MatHangId, @SoLuong, @DonGia);
+SELECT PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap WHERE (MatHangId = @MatHangId) AND (PhieuNhapId = @PhieuNhapId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTPhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTPhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CTPhieuNhap] SET [CTPhieuNhapId] = @CTPhieuNhapId, [PhieuNhapId] = @PhieuNhapId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([CTPhieuNhapId] = @Original_CTPhieuNhapId) AND ([PhieuNhapId] = @Original_PhieuNhapId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
-SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap WHERE (CTPhieuNhapId = @CTPhieuNhapId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [CTPhieuNhap] SET [PhieuNhapId] = @PhieuNhapId, [MatHangId] = @MatHangId, [SoLuong] = @SoLuong, [DonGia] = @DonGia WHERE (([PhieuNhapId] = @Original_PhieuNhapId) AND ([MatHangId] = @Original_MatHangId) AND ([SoLuong] = @Original_SoLuong) AND ([DonGia] = @Original_DonGia));
+SELECT PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap WHERE (MatHangId = @MatHangId) AND (PhieuNhapId = @PhieuNhapId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CTPhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTPhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonGia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonGia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CTPhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CTPhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9404,8 +9271,7 @@ SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM dbo.CTPhieuNha" +
-                "p";
+            this._commandCollection[0].CommandText = "SELECT PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9466,12 +9332,11 @@ SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_CTPhieuNhapId, long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_CTPhieuNhapId));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_PhieuNhapId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_MatHangId));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_SoLuong));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_DonGia));
+        public virtual int Delete(long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_PhieuNhapId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_MatHangId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SoLuong));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9492,12 +9357,11 @@ SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long CTPhieuNhapId, long PhieuNhapId, long MatHangId, int SoLuong, int DonGia) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(CTPhieuNhapId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(PhieuNhapId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(DonGia));
+        public virtual int Insert(long PhieuNhapId, long MatHangId, int SoLuong, int DonGia) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(PhieuNhapId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9518,17 +9382,15 @@ SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long CTPhieuNhapId, long PhieuNhapId, long MatHangId, int SoLuong, int DonGia, long Original_CTPhieuNhapId, long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(CTPhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(PhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(MatHangId));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(SoLuong));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(DonGia));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_CTPhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_PhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_MatHangId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_SoLuong));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_DonGia));
+        public virtual int Update(long PhieuNhapId, long MatHangId, int SoLuong, int DonGia, long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(PhieuNhapId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(MatHangId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(SoLuong));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(DonGia));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_PhieuNhapId));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_MatHangId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SoLuong));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_DonGia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9549,8 +9411,8 @@ SELECT CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia FROM CTPhieuNhap W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long PhieuNhapId, long MatHangId, int SoLuong, int DonGia, long Original_CTPhieuNhapId, long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
-            return this.Update(Original_CTPhieuNhapId, PhieuNhapId, MatHangId, SoLuong, DonGia, Original_CTPhieuNhapId, Original_PhieuNhapId, Original_MatHangId, Original_SoLuong, Original_DonGia);
+        public virtual int Update(int SoLuong, int DonGia, long Original_PhieuNhapId, long Original_MatHangId, int Original_SoLuong, int Original_DonGia) {
+            return this.Update(Original_PhieuNhapId, Original_MatHangId, SoLuong, DonGia, Original_PhieuNhapId, Original_MatHangId, Original_SoLuong, Original_DonGia);
         }
     }
     
@@ -12741,7 +12603,6 @@ SELECT NhanVienId, Ten, Ho, Phai, DiaChi, SoDienThoai, TrangThai, NgaySinh, ChiN
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "PhieuNhap";
-            tableMapping.ColumnMappings.Add("PhieuNhapId", "PhieuNhapId");
             tableMapping.ColumnMappings.Add("KhoId", "KhoId");
             tableMapping.ColumnMappings.Add("NhanVienId", "NhanVienId");
             tableMapping.ColumnMappings.Add("ThoiGian", "ThoiGian");
@@ -12749,36 +12610,33 @@ SELECT NhanVienId, Ten, Ho, Phai, DiaChi, SoDienThoai, TrangThai, NgaySinh, ChiN
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PhieuNhap] WHERE (([PhieuNhapId] = @Original_PhieuNhapId) AND " +
-                "([KhoId] = @Original_KhoId) AND ([NhanVienId] = @Original_NhanVienId) AND ([Thoi" +
-                "Gian] = @Original_ThoiGian) AND ([DatHangId] = @Original_DatHangId))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [PhieuNhap] WHERE (([KhoId] = @Original_KhoId) AND ([NhanVienId] = @O" +
+                "riginal_NhanVienId) AND ([ThoiGian] = @Original_ThoiGian) AND ([DatHangId] = @Or" +
+                "iginal_DatHangId))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KhoId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NhanVienId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NhanVienId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ThoiGian", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ThoiGian", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PhieuNhap] ([PhieuNhapId], [KhoId], [NhanVienId], [ThoiGian], [DatHangId]) VALUES (@PhieuNhapId, @KhoId, @NhanVienId, @ThoiGian, @DatHangId);
-SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE (PhieuNhapId = @PhieuNhapId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [PhieuNhap] ([KhoId], [NhanVienId], [ThoiGian], [DatHangId]) VALUES (" +
+                "@KhoId, @NhanVienId, @ThoiGian, @DatHangId);\r\nSELECT KhoId, NhanVienId, ThoiGian" +
+                ", DatHangId FROM PhieuNhap WHERE (DatHangId = @DatHangId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KhoId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NhanVienId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NhanVienId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ThoiGian", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ThoiGian", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PhieuNhap] SET [PhieuNhapId] = @PhieuNhapId, [KhoId] = @KhoId, [NhanVienId] = @NhanVienId, [ThoiGian] = @ThoiGian, [DatHangId] = @DatHangId WHERE (([PhieuNhapId] = @Original_PhieuNhapId) AND ([KhoId] = @Original_KhoId) AND ([NhanVienId] = @Original_NhanVienId) AND ([ThoiGian] = @Original_ThoiGian) AND ([DatHangId] = @Original_DatHangId));
-SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE (PhieuNhapId = @PhieuNhapId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [PhieuNhap] SET [KhoId] = @KhoId, [NhanVienId] = @NhanVienId, [ThoiGian] = @ThoiGian, [DatHangId] = @DatHangId WHERE (([KhoId] = @Original_KhoId) AND ([NhanVienId] = @Original_NhanVienId) AND ([ThoiGian] = @Original_ThoiGian) AND ([DatHangId] = @Original_DatHangId));
+SELECT KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE (DatHangId = @DatHangId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KhoId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NhanVienId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NhanVienId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ThoiGian", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ThoiGian", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatHangId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatHangId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhieuNhapId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhieuNhapId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KhoId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NhanVienId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NhanVienId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ThoiGian", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ThoiGian", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -12798,7 +12656,7 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM dbo.PhieuNhap";
+            this._commandCollection[0].CommandText = "SELECT KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12859,12 +12717,11 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_PhieuNhapId, long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_PhieuNhapId));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_KhoId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_NhanVienId));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_ThoiGian));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_DatHangId));
+        public virtual int Delete(long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_KhoId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_NhanVienId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_ThoiGian));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_DatHangId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12885,12 +12742,11 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long PhieuNhapId, long KhoId, long NhanVienId, System.DateTime ThoiGian, long DatHangId) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(PhieuNhapId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(KhoId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(NhanVienId));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(ThoiGian));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(DatHangId));
+        public virtual int Insert(long KhoId, long NhanVienId, System.DateTime ThoiGian, long DatHangId) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(KhoId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(NhanVienId));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(ThoiGian));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(DatHangId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12911,17 +12767,15 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long PhieuNhapId, long KhoId, long NhanVienId, System.DateTime ThoiGian, long DatHangId, long Original_PhieuNhapId, long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(PhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(KhoId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(NhanVienId));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(ThoiGian));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(DatHangId));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_PhieuNhapId));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_KhoId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_NhanVienId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_ThoiGian));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(Original_DatHangId));
+        public virtual int Update(long KhoId, long NhanVienId, System.DateTime ThoiGian, long DatHangId, long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(KhoId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(NhanVienId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(ThoiGian));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(DatHangId));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_KhoId));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_NhanVienId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_ThoiGian));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_DatHangId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12942,8 +12796,8 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long KhoId, long NhanVienId, System.DateTime ThoiGian, long DatHangId, long Original_PhieuNhapId, long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
-            return this.Update(Original_PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId, Original_PhieuNhapId, Original_KhoId, Original_NhanVienId, Original_ThoiGian, Original_DatHangId);
+        public virtual int Update(long KhoId, long NhanVienId, System.DateTime ThoiGian, long Original_KhoId, long Original_NhanVienId, System.DateTime Original_ThoiGian, long Original_DatHangId) {
+            return this.Update(KhoId, NhanVienId, ThoiGian, Original_DatHangId, Original_KhoId, Original_NhanVienId, Original_ThoiGian, Original_DatHangId);
         }
     }
     
@@ -13239,7 +13093,6 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
             tableMapping.DataSetTable = "V_INFO_CN";
             tableMapping.ColumnMappings.Add("ChiNhanhId", "ChiNhanhId");
             tableMapping.ColumnMappings.Add("Ten", "Ten");
-            tableMapping.ColumnMappings.Add("rowguid", "rowguid");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13256,7 +13109,7 @@ SELECT PhieuNhapId, KhoId, NhanVienId, ThoiGian, DatHangId FROM PhieuNhap WHERE 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ChiNhanhId, Ten, rowguid FROM dbo.V_INFO_CN";
+            this._commandCollection[0].CommandText = "SELECT ChiNhanhId, Ten FROM V_INFO_CN";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

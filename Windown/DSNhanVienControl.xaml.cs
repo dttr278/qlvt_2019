@@ -26,11 +26,19 @@ namespace WpfApp2
         private DSNhanVienControl()
         {
             InitializeComponent();
-            loadData(0);
+            try
+            {
+                loadData(0);
+            }
+            catch(Exception ex)
+            {
+                Common.ShowMessage(ex.Message);
+            }
         }
 
         public void add()
         {
+           
             AddNhanVienWindow.Singleton.dataGrid = dgContent;
             AddNhanVienWindow.Singleton.Hide();
             AddNhanVienWindow.Singleton.Show();
@@ -49,7 +57,7 @@ namespace WpfApp2
 
         public void loadData(int p)
         {
-            page = new Paging(Common.connection, 10, "NhanVien where TrangThai = 0", "NhanVienId desc");
+            page = new Paging(Common.connection, "NhanVien where TrangThai = 0", "NhanVienId desc");
             QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
             nhanViens.Rows.Clear();
 
@@ -57,11 +65,13 @@ namespace WpfApp2
             if (dataTable != null)
             {
                 nhanViens.Merge(dataTable);
+               
             }
+            nhanViens.DefaultView.RowFilter = "TrangThai <> 1";
             dgContent.ItemsSource = nhanViens;
             tableLog = new DataTableLog((DataTable)nhanViens);
-
             tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+
 
         }
 
@@ -91,18 +101,33 @@ namespace WpfApp2
         {
             if (update() > 0) {
                 Common.ShowMessage("Saved!");
-                //MessageBox.Show("Saved!");
             };
         }
 
         private void btnUndo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            undo();
+            try
+            {
+                undo();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void btnRedo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            redo();
+            try
+            {
+                redo();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void btnRefresh_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -119,7 +144,6 @@ namespace WpfApp2
                 if (p < 0 || p > page.totalPage)
                 {
                     Common.ShowMessage("Page not found!");
-                    //MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -130,7 +154,6 @@ namespace WpfApp2
             else
             {
                 Common.ShowMessage("Invalid number format!");
-                //MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -140,7 +163,6 @@ namespace WpfApp2
             if (p < 0 || p > page.totalPage)
             {
                 Common.ShowMessage("Page not found!");
-                //MessageBox.Show("Page not found!");
             }
             else
             {
@@ -169,35 +191,66 @@ namespace WpfApp2
         {
             if (txbSearch.Text.Length > 0)
             {
+                page = new Paging(Common.connection, "NhanVien where TrangThai = 0 and NhanVienId = '" + txbSearch.Text+"'", "NhanVienId desc");
                 QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
-                try
-                {
-                    DataTable table = ((QLVTDataSet.NhanVienDataTable)dgContent.ItemsSource).Select("NhanVienId=" + txbSearch.Text).CopyToDataTable();
-                    nhanViens.Merge(table);
-                    dgContent.ItemsSource = nhanViens;
-                }
-                catch (Exception ex)
-                {
-                    Common.ShowMessage("Result not found!");
+                nhanViens.Rows.Clear();
 
+                DataTable dataTable = page.getPage(0);
+                if (dataTable != null)
+                {
+                    nhanViens.Merge(dataTable);
+                    nhanViens.DefaultView.RowFilter = "TrangThai <> 1";
+                   
                 }
-               
+                dgContent.ItemsSource = nhanViens;
+                tableLog = new DataTableLog((DataTable)nhanViens);
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+
+                //QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
+                //try
+                //{
+                //    DataTable table = ((QLVTDataSet.NhanVienDataTable)dgContent.ItemsSource).Select("NhanVienId=" + txbSearch.Text).CopyToDataTable();
+                //    nhanViens.Merge(table);
+                //    dgContent.ItemsSource = nhanViens;
+                //}
+                //catch (Exception ex)
+                //{
+                //    Common.ShowMessage("Result not found!");
+
+                //}
+
             }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            (new AddNhanVienWindow(((DataRowView)dgContent.CurrentItem).Row)).Show();
+            
+            if (dgContent.CurrentItem != null)
+            {
+                tableLog.SetRowChange(((DataRowView)dgContent.CurrentItem).Row);
+                AddNhanVienWindow addNhanVienWindow=new AddNhanVienWindow(((DataRowView)dgContent.CurrentItem).Row);
+                addNhanVienWindow.dataGrid = this.dgContent;
+                addNhanVienWindow.Show();
+            }
+            else
+            {
+                Common.ShowMessage("Không có hàng nào được chọn!");
+            }
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView dataRowView = (DataRowView)dgContent.CurrentItem;
-            dataRowView.Row["TrangThai"] = 1;
-            QLVTDataSetTableAdapters.NhanVienTableAdapter nhanVienTableAdapter = new QLVTDataSetTableAdapters.NhanVienTableAdapter();
-            nhanVienTableAdapter.Connection = Common.connection;
-            nhanVienTableAdapter.Update(dataRowView.Row);
-            loadData(page.currentIndex);
+            if (dgContent.CurrentItem != null)
+            {
+                tableLog.SetRowChange(((DataRowView)dgContent.CurrentItem).Row);
+                DataRowView dataRowView = (DataRowView)dgContent.CurrentItem;
+                dataRowView.Row["TrangThai"] = 1;
+            }
+            else
+            {
+                Common.ShowMessage("Không có hàng nào được chọn!");
+            }
+           
         }
     }
 }

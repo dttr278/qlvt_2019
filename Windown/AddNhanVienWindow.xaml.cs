@@ -19,7 +19,7 @@ namespace WpfApp2
     /// </summary>
     public partial class AddNhanVienWindow : Window
     {
-        
+
         public Int64 Id { get; set; }
         DataRow row;
         static private AddNhanVienWindow signleton;
@@ -31,8 +31,7 @@ namespace WpfApp2
             if (signleton == null)
             {
                 signleton = new AddNhanVienWindow();
-                EventHandler eventHandler = (o, i) => { signleton = new AddNhanVienWindow(); };
-                signleton.Closed += eventHandler;
+               
             }
         }
 
@@ -55,6 +54,9 @@ namespace WpfApp2
 
             Id = 0;
 
+            EventHandler eventHandler = (o, i) => { signleton = new AddNhanVienWindow(); };
+            this.Closed += eventHandler;
+
 
         }
         public AddNhanVienWindow(DataRow row)
@@ -70,12 +72,12 @@ namespace WpfApp2
 
             cbxPhai.SelectedIndex = 0;
             Id = (Int64)row["NhanVienId"];
-            tbxHo.Text= (string)row["Ho"];
-            tbxTen.Text=(string)row["Ten"] ;
-            cbxPhai.SelectedValue=row["Phai"] ;
-            tbxDiaChi.Text=(string)row["DiaChi"];
-            tbxSoDienThoai.Text=(string)row["SoDienThoai"] ;
-            dpNgaySinh.SelectedDate=(DateTime)row["NgaySinh"];
+            tbxHo.Text = (string)row["Ho"];
+            tbxTen.Text = (string)row["Ten"];
+            cbxPhai.SelectedValue = row["Phai"];
+            tbxDiaChi.Text = (string)row["DiaChi"];
+            tbxSoDienThoai.Text = (string)row["SoDienThoai"];
+            dpNgaySinh.SelectedDate = (DateTime)row["NgaySinh"];
             this.row = row;
 
             tblTitle.Text = "ID:" + row["NhanVienId"].ToString();
@@ -86,21 +88,19 @@ namespace WpfApp2
             if (row == null)
             {
                 QLVTDataSet.NhanVienDataTable nhanViens = (QLVTDataSet.NhanVienDataTable)dataGrid.ItemsSource;
-                //nhanVienTableAdapter.Fill(nhanViens);
+
                 DataRow row = nhanViens.NewRow();
-                if(!row["Ho"].ToString().Equals(tbxHo.Text))
-                    row["Ho"] = tbxHo.Text;
-                if(!row["Ten"].ToString().Equals(tbxTen.Text))
-                    row["Ten"] = tbxTen.Text;
+                row["Ho"] = tbxHo.Text;
+                row["Ten"] = tbxTen.Text;
                 row["Phai"] = cbxPhai.SelectedValue;
                 row["DiaChi"] = tbxDiaChi.Text;
                 row["SoDienThoai"] = tbxSoDienThoai.Text;
                 DateTime? selectedDate = dpNgaySinh.SelectedDate;
                 row["NgaySinh"] = selectedDate;
-                row["NhanVienId"] =  -1;
+                row["NhanVienId"] = Common.genId--;
                 row["ChiNhanhId"] = (int)Common.CurrentChiNhanhId;
                 row["TrangThai"] = 0;
-                
+
                 nhanViens.Rows.Add(row);
                 this.Close();
             }

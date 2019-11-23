@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -33,14 +34,22 @@ namespace WpfApp2
         private KhoControl()
         {
             InitializeComponent();
+            try
+            {
+                loadData(0);
+            }
+            catch (Exception ex)
+            {
+                Common.ShowMessage(ex.Message);
+            }
         }
 
         public void add()
         {
-            //Kho.Singleton.dataGrid = dgContent;
-            //Kho.Singleton.Hide();
-            //AddNhanVienWindow.Singleton.Show();
-            //Window.GetWindow(this).Closed += (o, ev) => { AddNhanVienWindow.Singleton.Close(); };
+            AddKho.Singleton.dataGrid = dgContent;
+            AddKho.Singleton.Hide();
+            AddKho.Singleton.Show();
+            Window.GetWindow(this).Closed += (o, ev) => { AddKho.Singleton.Close(); };
         }
 
         public void delete()
@@ -52,13 +61,10 @@ namespace WpfApp2
         {
             throw new NotImplementedException();
         }
-
         public void loadData(int p)
         {
-            page = new Paging(Common.connection, 10, "Kho", "KhoId desc");
+            page = new Paging(Common.connection, "Kho", "KhoId desc");
             QLVTDataSet.KhoDataTable khos = new QLVTDataSet.KhoDataTable();
-
-
             DataTable dataTable = page.getPage(p);
             if (dataTable != null)
             {
@@ -66,7 +72,6 @@ namespace WpfApp2
             }
             dgContent.ItemsSource = khos;
             tableLog = new DataTableLog((DataTable)khos);
-
             tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
         }
 
@@ -102,12 +107,28 @@ namespace WpfApp2
 
         private void btnUndo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            undo();
+            try
+            {
+                undo();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void btnRedo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            redo();
+            try
+            {
+                redo();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void btnRefresh_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -169,38 +190,45 @@ namespace WpfApp2
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (txbSearch.Text.Length > 0)
+            page = new Paging(Common.connection, "Kho where KhoId = '" + txbSearch.Text + "'", "KhoId desc");
+            QLVTDataSet.KhoDataTable khos = new QLVTDataSet.KhoDataTable();
+            DataTable dataTable = page.getPage(0);
+            if (dataTable != null)
             {
-                QLVTDataSet.KhoDataTable khos = new QLVTDataSet.KhoDataTable();
-                try
-                {
-                    DataTable table = ((QLVTDataSet.KhoDataTable)dgContent.ItemsSource).Select("KhoId=" + txbSearch.Text).CopyToDataTable();
-                    khos.Merge(table);
-                    dgContent.ItemsSource = khos;
-                }
-                catch (Exception ex)
-                {
-                    Common.ShowMessage("Result not found!");
-
-                }
-
+                khos.Merge(dataTable);
             }
+            dgContent.ItemsSource = khos;
+            tableLog = new DataTableLog((DataTable)khos);
+            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //(new AddNhanVienWindow(((DataRowView)dgContent.CurrentItem).Row)).Show();
+
+            if (dgContent.CurrentItem != null)
+            {
+                tableLog.SetRowChange(((DataRowView)dgContent.CurrentItem).Row);
+                AddKho addKho = new AddKho(((DataRowView)dgContent.CurrentItem).Row);
+                addKho.dataGrid = this.dgContent;
+                addKho.Show();
+            }
+            else
+            {
+                Common.ShowMessage("Không có hàng nào được chọn!");
+            }
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            dgContent.Items.Remove(dgContent.CurrentItem);
-            //DataRowView dataRowView = (DataRowView)dgContent.CurrentItem;
-            //dataRowView.Row["TrangThai"] = 1;
-            //QLVTDataSetTableAdapters.KhoTableAdapter khoTableAdapter = new QLVTDataSetTableAdapters.KhoTableAdapter();
-            //khoTableAdapter.Connection = Common.connection;
-            //khoTableAdapter.Update(dataRowView.Row);
-            //loadData(page.currentIndex);
+
+            if (dgContent.CurrentItem != null)
+            {
+                ((DataRowView)dgContent.CurrentItem).Delete();
+            }
+            else
+            {
+                Common.ShowMessage("Không có hàng nào được chọn!");
+            }
         }
     }
 }

@@ -14,11 +14,11 @@ namespace WpfApp2
         public int totalPage;
         SqlConnection connection;
         SqlDataAdapter adapter;
-        public Paging(SqlConnection connection, int pageSize, string tableName, string order)
+        public Paging(SqlConnection connection, string tableName, string order)
         {
             this.connection = connection;
             this.tableName = tableName;
-            this.pageSize = pageSize;
+            this.pageSize = Properties.Settings.Default.PageSize;
             orderSQL = "SELECT * FROM " + tableName + " ORDER BY " + order;
             adapter = new SqlDataAdapter(orderSQL, connection);
 
@@ -42,11 +42,11 @@ namespace WpfApp2
             if (count % pageSize > 0) totalPage++;
             totalPage--;
             if (current > totalPage && current < 1) return null;
-            DataSet dataSet = Common.DataSet;
+            DataSet dataSet = new DataSet();
             if (dataSet.Tables[tableName] != null)
                 dataSet.Tables[tableName].Rows.Clear();
             currentIndex = current;
-            adapter.Fill(dataSet, currentIndex, pageSize, tableName);
+            adapter.Fill(dataSet, currentIndex * pageSize, pageSize, tableName);
             return dataSet.Tables[tableName];
         }
     }

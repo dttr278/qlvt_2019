@@ -3,23 +3,71 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:WpfApp2" x:Class="WpfApp2.MainContentWindow" mc:Ignorable="d" 
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Title="MainContentWindow" Height="550" Width="800">
+    Closed="Window_Closed"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Title="MainContentWindow" Height="800" Width="1061.282" WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <materialDesign:Card Padding="0" Margin="0">
-            <ToolBarPanel DockPanel.Dock="Top" Height="70" VerticalAlignment="Top">
-                <ToolBar ToolBarTray.IsLocked="True" Height="72" VerticalAlignment="Top">
-                    <Button Name="btnDSNhanVien" ToolTip="Nhan Vien" Click="btnDSNhanVien_Click" VerticalAlignment="Center" Width="116" Margin="0,0,0,0" Height="72">
-                        <materialDesign:PackIcon Kind="Person" Height="42" Width="78"/>
-                    </Button>
-                    <Button Name="btnDSKho" Click="btnDSKho_Click" ToolTip="Kho" VerticalAlignment="Center" Width="116" Margin="0,0,0,0" Height="72">
-                        <materialDesign:PackIcon Kind="Archive" Height="42" Width="78"/>
-                    </Button>
-                    <ComboBox HorizontalAlignment="Right" Name="cbxCN" VerticalAlignment="Center" Width="176" Margin="0,0,0,0" />
-                </ToolBar>
-            </ToolBarPanel>
-        </materialDesign:Card>
-        <StackPanel x:Name="pnContent" Margin="0,75,0,0"/>
+
+        <ToolBarTray >
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False" Margin="0,0,0,0">
+                <Button Name="btnDSNhanVien" ToolTip="Nhan Vien" Click="btnDSNhanVien_Click" ToolBar.OverflowMode="AsNeeded">
+                    Nhân viên
+                </Button>
+                <Button Name="btnDSKho" Click="btnDSKho_Click" ToolTip="Kho">
+                    Kho
+                </Button>
+                <Button Name="btnDSKhachHang" Click="btnDSKhachHang_Click" ToolTip="Khách hàng">
+                    Khách hàng
+                </Button>
+                <Button Name="btnDSNCC" Click="btnDSNCC_Click" ToolTip="Nhà cung cấp">
+                    Nhà cung cấp
+                </Button>
+                <Separator/>
+                <Button Name="btnDanhMucVT" Click="btnDanhMucVT_Click" ToolTip="Danh mục vật tư">
+                    Danh mục vật tư
+                </Button>
+                <Button Name="btnVT" Click="btnVT_Click" ToolTip="Vật tư">
+                    Vật tư
+                </Button>
+                <Separator/>
+                <Button Name="btnDH" Click="btnDH_Click" ToolTip="Đặt hàng">
+                    Đặt hàng
+                </Button>
+                <Button Name="btnHD" Click="btnHD_Click" ToolTip="Hóa đơn">
+                    Hóa đơn
+                </Button>
+                <Button Name="btnPN" Click="btnPN_Click" ToolTip="Phiếu nhập">
+                    Phiếu nhập
+                </Button>
+                <Separator/>
+                <ComboBox Name="cbxCN"/>
+                <Menu VerticalAlignment="Center">
+                    <MenuItem Header="Báo cáo">
+                        <MenuItem Header="Báo cáo 1">
+
+                        </MenuItem>
+                        <MenuItem Header="Báo cáo 2">
+
+                        </MenuItem>
+                        <MenuItem Header="Báo cáo 3">
+
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </ToolBarTray>
+        <DockPanel Name="pnContent" Margin="0,50,0,0"/>
+        <DockPanel LastChildFill="False" Margin="10,0" Height="35" VerticalAlignment="Bottom">
+            <TextBlock Height="25" TextWrapping="Wrap" Text="Login: " VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <TextBlock Name="tblLogin" Height="25" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Height="25" TextWrapping="Wrap" Text="Username: " VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <TextBlock Name="tblUserName" Height="25" TextWrapping="Wrap" Text="User:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Height="25" TextWrapping="Wrap" Text="Nhóm: " VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <TextBlock Name="tblNhom" Height="25" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Height="25" TextWrapping="Wrap" Text="Chi nhánh: " VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <TextBlock Name="tblChiNhanh" Height="25" TextWrapping="Wrap" Text="Chi nhánh:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        </DockPanel>
+
         <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>
     </Grid>
 </Window>

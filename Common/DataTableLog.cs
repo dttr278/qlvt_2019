@@ -5,13 +5,19 @@ using System.Data;
 
 namespace WpfApp2
 {
-    class DataTableLog
+    public class DataTableLog
     {
         public List<LogRecord> Log { get; set; }
         public DataTable Table { get; set; }
         public int Index { get; set; }
         public bool CanRedo { get; set; }
         public bool IsUndoOrRedo { get; set; }
+        public LogRecord RowChange { get; set; }
+        public void SetRowChange(DataRow rowChange)
+        {
+            this.RowChange = new LogRecord(rowChange.ItemArray, DataRowStatus.CHANGING, rowChange);
+           
+        }
         public DataTableLog(DataTable dt)
         {
             Index = -1;
@@ -21,8 +27,7 @@ namespace WpfApp2
             CanRedo = false;
             Table.TableNewRow += OnTableNewRow;
             Table.RowChanged += OnRowChanged;
-            Table.ColumnChanging += OnColumnChanging;
-            Table.ColumnChanged += OnColumnChanged;
+            Table.RowChanging += OnRowChanging;
             Table.RowDeleting += OnRowDeleting;
         }
 
@@ -35,63 +40,44 @@ namespace WpfApp2
         //mot row moi that su dduocwj them vao data table
         protected void OnRowChanged(object sender, DataRowChangeEventArgs e)
         {
-            if (isNew && e.Row.RowState == DataRowState.Added && !IsUndoOrRedo)
+            if (e.Row.RowState == DataRowState.Detached) 
+                return;
+            if (!IsUndoOrRedo)
             {
-                isNew = false;
-                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.ADD, e.Row);
-                if (Log.Count > 0 && lrc.Equals(Log[Log.Count - 1])) { return; }
                 if (CanRedo)
                 {
-                    CanRedo = false;
                     Log.RemoveRange(Index + 1, Log.Count - (Index + 1));
+                    CanRedo = false;
                 }
                
+                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.ADD, e.Row);
+                if (lrc.Equals(RowChange)) return;
+                if (!isNew) lrc.Status = DataRowStatus.CHANGED;
                 Log.Add(lrc);
+                SetRowChange(e.Row);
                 Index++;
 
             }
         }
 
-        void OnColumnChanged(object sender, DataColumnChangeEventArgs e)
+        //mot row moi that su dduocwj them vao data table
+        protected void OnRowChanging(object sender, DataRowChangeEventArgs e)
         {
-            if (e.Row.RowState == DataRowState.Detached)
-            {
-                return;
-            }
+            if (isNew) return;
             if (!IsUndoOrRedo)
             {
-                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.CHANGING, e.Row);
-                if (Log.Count > 0 && lrc.Equals(Log[Log.Count - 1])) { return; }
-                if (Log.Count > 0 && lrc.Equals(Log[Log.Count - 1])) { return; }
                 if (CanRedo)
                 {
-                    CanRedo = false;
                     Log.RemoveRange(Index + 1, Log.Count - (Index + 1));
-                }
-                Log.Add(lrc);
-                Index++;
-            }
-
-        }
-        void OnColumnChanging(object sender, DataColumnChangeEventArgs e)
-        {
-
-            if (e.Row.RowState == DataRowState.Detached)
-            {
-                return;
-            }
-            if (!IsUndoOrRedo)
-            {
-                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.CHANGING, e.Row);
-                if (Log.Count > 0 && lrc.Equals(Log[Log.Count - 1])) { return; }
-                if (CanRedo)
-                {
                     CanRedo = false;
-                    Log.RemoveRange(Index + 1, Log.Count - (Index + 1));
                 }
-
-                Log.Add(lrc);
+                LogRecord newlrc = new LogRecord(e.Row.ItemArray, DataRowStatus.CHANGING, e.Row);
+                if (newlrc.Equals(RowChange))
+                    return;
+                if (RowChange != null)
+                    Log.Add(RowChange);
                 Index++;
+
             }
         }
 
@@ -101,10 +87,10 @@ namespace WpfApp2
             {
                 if (CanRedo)
                 {
-                    CanRedo = false;
                     Log.RemoveRange(Index + 1, Log.Count - (Index + 1));
+                    CanRedo = false;
                 }
-                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.DELETE, e.Row);
+                LogRecord lrc = new LogRecord(e.Row.ItemArray, DataRowStatus.DELETE, e.Row.Table.NewRow());
                 Log.Add(lrc);
                 Index++;
             }
@@ -112,6 +98,7 @@ namespace WpfApp2
         public void Undo()
         {
             IsUndoOrRedo = true;
+            if (Index > Log.Count - 1) Index = Log.Count - 1;
             if (Index >= 0)
             {
                 LogRecord rc = Log[Index];
@@ -125,6 +112,7 @@ namespace WpfApp2
                 {
                     if (rc.Status == DataRowStatus.DELETE)
                     {
+
                         for (int i = 0; i < rc.RowItems.Length; i++)
                         {
                             rc.Row[i] = rc.RowItems[i];
@@ -134,29 +122,21 @@ namespace WpfApp2
                     }
                     else
                     {
-                        l = Log[Index - 1];
-                        if (l.Status == DataRowStatus.ADD || l.Status == DataRowStatus.DELETE)
+                        if (l.Status == DataRowStatus.CHANGING)
+                        {
+                            l = Log[Index];
+                            for (int i = 0; i < rc.RowItems.Length; i++)
+                            {
+                                l.Row[i] = l.RowItems[i];
+                            }
+                            Index--;
+                        }
+                        else
                         {
                             Index--;
                             Undo();
                         }
-                        else
-                        if (rc.Status == DataRowStatus.CHANGING|| rc.Status == DataRowStatus.CHANGED)
-                        {
-                            if (l.Status == DataRowStatus.CHANGED)
-                            {
-                                Index--;
-                                Undo();
-                            }
-                            else
-                            {
-                                for (int i = 0; i < rc.RowItems.Length; i++)
-                                {
-                                    l.Row[i] = l.RowItems[i];
-                                }
-                                Index--;
-                            }
-                        }
+
                     }
 
                 }
@@ -181,28 +161,37 @@ namespace WpfApp2
                     Table.Rows.Add(rc.Row);
 
                 }
-                else if (rc.Status == DataRowStatus.CHANGED || rc.Status == DataRowStatus.CHANGING)
+                else if (rc.Status == DataRowStatus.DELETE)
                 {
+                    Table.Rows.Remove(rc.Row);
+                }
+                else if (rc.Status == DataRowStatus.CHANGED)
+                {
+                    rc = Log[Index];
                     for (int i = 0; i < rc.RowItems.Length; i++)
                     {
                         rc.Row[i] = rc.RowItems[i];
                     }
                 }
-                else if (rc.Status == DataRowStatus.DELETE)
+                else
                 {
-                    Table.Rows.Remove(rc.Row);
+                    Redo();
                 }
+            }
+            else
+            {
+                CanRedo = false;
             }
 
             IsUndoOrRedo = false;
         }
 
     }
-    enum DataRowStatus
+    public enum DataRowStatus
     {
         ADD, DELETE, CHANGING, CHANGED
     }
-    class LogRecord
+    public class LogRecord
     {
         public Object[] RowItems { get; set; }
         public DataRowStatus Status { get; set; }
@@ -228,6 +217,10 @@ namespace WpfApp2
                         return false;
                     }
                 }
+            }
+            else
+            {
+                return false;
             }
             return true;
         }
