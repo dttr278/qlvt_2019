@@ -13,8 +13,8 @@
         <local:MonneyConverter x:Key="monneyConverter"/>
         <local:DateConverter x:Key="dateConverter"/>
     </UserControl.Resources>
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
+    <Grid>
+        <Grid Height="306" VerticalAlignment="Top">
             <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top">
                 <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
                     <Button x:Name="btnAdd" Click="btnAdd_Click" VerticalAlignment="Top" >
@@ -33,12 +33,12 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" Height="333" SelectionMode="Single"  VerticalAlignment="Top">
+            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã" Binding="{Binding DatHangId}" />
                     <DataGridTextColumn Header="Mã nhà cung cấp" Binding="{Binding NhaCungCapId}" />
                     <DataGridTextColumn Header="Nhà cung cấp" Binding="{Binding NhaCungCapId, Converter={StaticResource NCCConverter}}" />
-                    
+
                     <DataGridTextColumn Header="Mã nhân viên lập" Binding="{Binding NhanVienId}"/>
                     <DataGridTextColumn Header="Ngày lập" Binding="{Binding ThoiGian,Converter={StaticResource dateConverter}}" />
                     <!--, Converter={StaticResource NhanVienConverter}-->
@@ -58,18 +58,8 @@
                 </TextBlock>
             </DockPanel>
         </Grid>
-        <Grid>
-            <!--<ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top">
-                <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
-                    <Button x:Name="btnCTAdd" Click="btnAdd_Click" VerticalAlignment="Top" >
-                        <materialDesign:PackIcon Kind="Add"/>
-                    </Button>
-                    <Button Name="btnCTRemove" Click="btnRemove_Click" VerticalAlignment="Top" >
-                        <materialDesign:PackIcon Kind="Delete"/>
-                    </Button>
-                </ToolBar>
-            </ToolBarTray>-->
-            <DataGrid Name="dgCTContent" Margin="0,0,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Top">
+        <Grid Margin="0,311,0,25" >
+            <DataGrid Name="dgCTContent" Margin="0,0,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã mặt hàng" Binding="{Binding MatHangId}" />
                     <DataGridTextColumn Header="Tên mặt hàng" Binding="{Binding MatHangId, Converter={StaticResource matHangConverter}}" />
@@ -78,5 +68,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-    </DockPanel>
+    </Grid>
 </UserControl>

@@ -9,8 +9,24 @@
         <materialDesign:Card Padding="32" Margin="16,16,16,10" VerticalAlignment="Stretch">
             <Grid>
                 <TextBlock Name="tblTitle" FontSize="24" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Margin="53,10,52,0" TextWrapping="Wrap" Text="Thêm vật tư" VerticalAlignment="Top" Height="46" Width="431"/>
-                <TextBox materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxTen" Height="40" Margin="53,91,52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478"/>
-                <TextBox materialDesign:HintAssist.Hint="Đơn vị tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxDVT" Height="39" Margin="53,152,52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxTen" Height="40" Margin="53,91,52,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="Ten"  UpdateSourceTrigger="Explicit" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox materialDesign:HintAssist.Hint="Đơn vị tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxDVT" Height="39" Margin="53,152,52,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="DonVi"  UpdateSourceTrigger="Explicit" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <Button Name="btnOk" Click="btnOk_Click" Content="Ok" Margin="0,0,52,24" Height="32" HorizontalAlignment="Right" Width="75" VerticalAlignment="Bottom"/>
                 <TextBox KeyUp="tbxLoaiHang_KeyUp" materialDesign:HintAssist.Hint="Loại vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="tbxLoaiHang" Height="39" Margin="53,208,52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478"/>
                 <DataGrid SelectionChanged="dgLoaiMatHang_SelectionChanged" SelectedValuePath="LoaiHangId" Name="dgLoaiMatHang" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Margin="53,252,52,73">
@@ -18,6 +34,13 @@
                         <DataGridTextColumn Header="Mã" Binding="{Binding LoaiHangId}" />
                         <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
                     </DataGrid.Columns>
+                    <DataGrid.SelectedValue>
+                        <Binding Path="LoaiVatTu"  UpdateSourceTrigger="Explicit" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DataGrid.SelectedValue>
                 </DataGrid>
             </Grid>
 

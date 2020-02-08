@@ -38,10 +38,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+      <HintPath>packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <HintPath>packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -61,12 +73,42 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddLogin.xaml.cs">
+      <DependentUpon>AddLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\CTNX.xaml.cs">
+      <DependentUpon>CTNX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DSNV.xaml.cs">
+      <DependentUpon>DSNV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\HDNV.xaml.cs">
+      <DependentUpon>HDNV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\NhapTheoThang.xaml.cs">
+      <DependentUpon>NhapTheoThang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\THNXNgay.xaml.cs">
+      <DependentUpon>THNXNgay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\THVatTu.xaml.cs">
+      <DependentUpon>THVatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\VatTu.xaml.cs">
+      <DependentUpon>VatTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XuatTheoThang.xaml.cs">
+      <DependentUpon>XuatTheoThang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Common\ViewModel.cs" />
     <Compile Include="Windown\AddPhieuNhap.xaml.cs">
       <DependentUpon>AddPhieuNhap.xaml</DependentUpon>
     </Compile>
@@ -148,6 +190,42 @@
     </Compile>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\UpdateDataWindow.cs" />
+    <Page Include="AddLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\CTNX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\DSNV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\HDNV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\NhapTheoThang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\THNXNgay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\THVatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\VatTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report\XuatTheoThang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windown\AddPhieuNhap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +329,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportTemplate\RDLC\CTNXThang.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\DanhSachNV.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\XuatTheoThang.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\NhapTheoThang.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\NVHD.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\THVatTu.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\TongHopNhapXuatNgay.rdlc" />
+    <EmbeddedResource Include="ReportTemplate\RDLC\VatTu.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -270,6 +356,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

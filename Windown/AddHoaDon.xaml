@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:WpfApp2" 
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="" Height="800" Width="1000" WindowStartupLocation="CenterScreen">
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:MatHangConverter x:Key="matHangConverter"/>
         <local:MonneyConverter x:Key="monneyConverter"/>
@@ -14,12 +14,19 @@
         <Grid>
             <TextBlock Name="tblTitle" FontSize="24" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Margin="53,10,52,0" TextWrapping="Wrap" Text="Hóa đơn" VerticalAlignment="Top" Height="46" Width="431"/>
             <TextBox KeyUp="tbxKho_KeyUp" materialDesign:HintAssist.Hint="Kho" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxKho" Height="40" Margin="53,61,598,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478"/>
-            <DataGrid SelectionChanged="dgKho_SelectionChanged"  SelectedValuePath="KhoId" Name="dgKho" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Margin="53,106,598,0" Height="243" VerticalAlignment="Top">
+            <DataGrid SelectionChanged="dgKho_SelectionChanged"  SelectedValuePath="KhoId" Name="dgKho" AutoGenerateColumns="False" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Margin="53,106,0,0" Height="243" VerticalAlignment="Top" Width="341">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã" Binding="{Binding KhoId}" />
                     <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
                     <DataGridTextColumn Header="Vị trí" Binding="{Binding ViTri}" />
                 </DataGrid.Columns>
+                <DataGrid.SelectedValue>
+                    <Binding Path="Kho" Mode="TwoWay"  UpdateSourceTrigger="Explicit" >
+                        <Binding.ValidationRules>
+                            <local:ReqireValidator/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.SelectedValue>
             </DataGrid>
             <TextBox KeyUp="tbxKhachHang_KeyUp" materialDesign:HintAssist.Hint="Khách hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="tbxKhachHang" Height="40" Margin="449,61,52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478"/>
             <DataGrid SelectionChanged="dgKhachhang_SelectionChanged"  SelectedValuePath="KhachHangId" x:Name="dgKhachhang" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Margin="449,106,52,0" Height="243" VerticalAlignment="Top">
@@ -28,6 +35,13 @@
                     <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
                     <DataGridTextColumn Header="SDT" Binding="{Binding SoDienThoai}" />
                 </DataGrid.Columns>
+                <DataGrid.SelectedValue>
+                    <Binding Path="KhachHang" Mode="TwoWay"  UpdateSourceTrigger="Explicit" >
+                        <Binding.ValidationRules>
+                            <local:ReqireValidator/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.SelectedValue>
             </DataGrid>
 
             <TextBox KeyUp="txbVT_KeyUp" materialDesign:HintAssist.Hint="Tìm vật tư" x:Name="txbVT" Height="40" Margin="53,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478" HorizontalAlignment="Left" Width="341"/>
@@ -57,7 +71,7 @@
                 </DataGrid>
             </Grid>
             <Button Name="btnOk" Click="btnOk_Click" Content="Ok" Margin="0,0,52,22" Height="32" HorizontalAlignment="Right" Width="75" VerticalAlignment="Bottom" RenderTransformOrigin="0.513,1.065"/>
-            
+
 
         </Grid>
 

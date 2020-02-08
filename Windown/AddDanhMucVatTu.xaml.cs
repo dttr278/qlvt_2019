@@ -36,36 +36,46 @@ namespace WpfApp2
         }
         private AddDanhMucVatTu()
         {
+            this.DataContext = new ViewModel();
             InitializeComponent();
             EventHandler eventHandler = (o, i) => { signleton = new AddDanhMucVatTu(); };
             this.Closed += eventHandler;
         }
         public AddDanhMucVatTu(DataRow row)
         {
+            
             InitializeComponent();
-
+            this.DataContext = new ViewModel();
+            btnOk.Content = "Lưu";
             Id = (Int64)row["LoaiHangId"];
-            txbTen.Text = (string)row["Ten"];
+            ((ViewModel)this.DataContext).Ten =txbTen.Text = (string)row["Ten"];
             this.row = row;
             tblTitle.Text = "ID:" + row["LoaiHangId"].ToString();
         }
-
+        private void ForceValidation()
+        {
+            txbTen.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (row == null)
-            {
-                QLVTDataSet.LoaiHangDataTable nhaCungCaps = (QLVTDataSet.LoaiHangDataTable)dataGrid.ItemsSource;
-
-                DataRow row = nhaCungCaps.NewRow();
-                row["Ten"] = txbTen.Text;
-                row["LoaiHangId"] = Common.genId--;
-                nhaCungCaps.Rows.Add(row);
-                this.Close();
-            }
-            else
-            {
-                row["Ten"] = txbTen.Text;
-                this.Close();
+            ForceValidation();
+            if (!Validation.GetHasError(txbTen)){
+                if (row == null)
+                {
+                    QLVTDataSet.LoaiHangDataTable nhaCungCaps = (QLVTDataSet.LoaiHangDataTable)dataGrid.ItemsSource;
+                    DataRow row = nhaCungCaps.NewRow();
+                    row["Ten"] = txbTen.Text;
+                    row["LoaiHangId"] = Common.genId--;
+                    nhaCungCaps.Rows.Add(row);
+                    //this.Close();
+                    this.txbTen.Text = "";
+                    MessageBox.Show("Đã thêm!");
+                }
+                else
+                {
+                    row["Ten"] = txbTen.Text;
+                    this.Close();
+                }
             }
         }
     }

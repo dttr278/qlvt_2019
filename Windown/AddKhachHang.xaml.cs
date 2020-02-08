@@ -37,45 +37,59 @@ namespace WpfApp2
         private AddKhachHang()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel();
             EventHandler eventHandler = (o, i) => { signleton = new AddKhachHang(); };
             this.Closed += eventHandler;
         }
         public AddKhachHang(DataRow row)
         {
             InitializeComponent();
-
+            ViewModel d = new ViewModel();
             Id = (Int64)row["KhachHangId"];
-            txbHo.Text = (string)row["Ho"];
-            txbTen.Text = (string)row["Ten"];
+           d.Ten= txbTen.Text = (string)row["Ten"];
             txbSDT.Text = (string)row["SoDienThoai"];
             txbDiaChi.Text = (string)row["DiaChi"];
             this.row = row;
             tblTitle.Text = "ID:" + row["KhachHangId"].ToString();
+            this.DataContext = d;
         }
+        private void ForceValidation()
+        {
+            txbTen.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
+        private void Reset()
+        {
+            txbTen.Text = txbSDT.Text = txbDiaChi.Text = "";
 
+        }
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (row == null)
+            ForceValidation();
+            if (!Validation.GetHasError(txbTen))
             {
-                QLVTDataSet.KhachHangDataTable khachHangs = (QLVTDataSet.KhachHangDataTable)dataGrid.ItemsSource;
+                if (row == null)
+                {
+                    QLVTDataSet.KhachHangDataTable khachHangs = (QLVTDataSet.KhachHangDataTable)dataGrid.ItemsSource;
 
-                DataRow row = khachHangs.NewRow();
-                row["Ho"] = txbHo.Text;
-                row["Ten"] = txbTen.Text;
-                row["SoDienThoai"] = txbSDT.Text;
-                row["DiaChi"] = txbDiaChi.Text;
-                row["KhachHangId"] = Common.genId--;
-                row["ChiNhanhId"] = Common.CurrentChiNhanhId;
-                khachHangs.Rows.Add(row);
-                this.Close();
-            }
-            else
-            {
-                row["Ho"] = txbHo.Text;
-                row["Ten"] = txbTen.Text;
-                row["SoDienThoai"] = txbSDT.Text;
-                row["DiaChi"] = txbDiaChi.Text;
-                this.Close();
+                    DataRow row = khachHangs.NewRow();
+                    //row["Ho"] = txbHo.Text;
+                    row["Ten"] = txbTen.Text;
+                    row["SoDienThoai"] = txbSDT.Text;
+                    row["DiaChi"] = txbDiaChi.Text;
+                    row["KhachHangId"] = Common.genId--;
+                    row["ChiNhanhId"] = Common.CurrentChiNhanhId;
+                    khachHangs.Rows.Add(row);
+                    MessageBox.Show("Đã thêm!");
+                    Reset();
+                    //this.Close();
+                }
+                else
+                {
+                    row["Ten"] = txbTen.Text;
+                    row["SoDienThoai"] = txbSDT.Text;
+                    row["DiaChi"] = txbDiaChi.Text;
+                    this.Close();
+                }
             }
         }
     }

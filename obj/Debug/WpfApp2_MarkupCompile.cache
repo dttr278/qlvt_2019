@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\source\qlvt_2019\obj\Debug\
+d:\source\qlvt_2019\obj\Debug\
 WpfApp2
 none
 false
 DEBUG;TRACE
-D:\source\qlvt_2019\App.xaml
-21348097928
+d:\source\qlvt_2019\App.xaml
+301400971925
+4-1681750708
+45-1736207463
+24-237310028
+AddLogin.xaml;Report\CTNX.xaml;Report\DSNV.xaml;Report\HDNV.xaml;Report\NhapTheoThang.xaml;Report\THNXNgay.xaml;Report\THVatTu.xaml;Report\VatTu.xaml;Report\XuatTheoThang.xaml;Windown\AddPhieuNhap.xaml;Windown\AddHoaDon.xaml;Windown\HoaDon.xaml;Windown\PhieuNhap.xaml;Windown\AddDatHang.xaml;Windown\AddVatTu.xaml;Windown\DatHang.xaml;Windown\VatTu.xaml;Windown\AddDanhMucVatTu.xaml;Windown\DanhMucVatTu.xaml;Windown\AddNhaCungCap.xaml;Windown\NhaCungCap.xaml;Windown\AddKhachHang.xaml;Windown\KhachHang.xaml;Windown\AddKho.xaml;MessageDialog.xaml;Windown\AddNhanVienWindow.xaml;Windown\DSNhanVienControl.xaml;Windown\Kho.xaml;Windown\MainContentWindow.xaml;MainWindow.xaml;
 
-33-660356279
-19558318407
-Windown\AddPhieuNhap.xaml;Windown\AddHoaDon.xaml;Windown\HoaDon.xaml;Windown\PhieuNhap.xaml;Windown\AddDatHang.xaml;Windown\AddVatTu.xaml;Windown\DatHang.xaml;Windown\VatTu.xaml;Windown\AddDanhMucVatTu.xaml;Windown\DanhMucVatTu.xaml;Windown\AddNhaCungCap.xaml;Windown\NhaCungCap.xaml;Windown\AddKhachHang.xaml;Windown\KhachHang.xaml;Windown\AddKho.xaml;MessageDialog.xaml;Windown\AddNhanVienWindow.xaml;Windown\DSNhanVienControl.xaml;Windown\Kho.xaml;Windown\MainContentWindow.xaml;MainWindow.xaml;
-
-False
+True
 

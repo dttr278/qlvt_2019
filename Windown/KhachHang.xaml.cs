@@ -23,13 +23,30 @@ namespace WpfApp2
         private KhachHang()
         {
             InitializeComponent();
+            switch (Common.CurrentRole)
+            {
+                case Common.RoleNhanVien:
+                    break;
+                case Common.RoleChiNhanh:
+                    break;
+                case Common.RoleCongTy:
+                    btnAdd.IsEnabled = false;
+                    btnEdit.IsEnabled = false;
+                    btnRemove.IsEnabled = false;
+                    btnSave.IsEnabled = false;
+                    btnUndo.IsEnabled = false;
+                    btnRedo.IsEnabled = false;
+                    break;
+                default:
+                    break;
+            }
             try
             {
                 loadData(0);
             }
             catch (Exception ex)
             {
-                Common.ShowMessage(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         public void add()
@@ -52,19 +69,25 @@ namespace WpfApp2
 
         public void loadData(int p)
         {
-            page = new Paging(Common.connection, "KhachHang", "KhachHangId desc");
-            QLVTDataSet.KhachHangDataTable khachHangs = new QLVTDataSet.KhachHangDataTable();
-
-
-            DataTable dataTable = page.getPage(p);
-            if (dataTable != null)
+            try
             {
-                khachHangs.Merge(dataTable);
-            }
-            dgContent.ItemsSource = khachHangs;
-            tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+                page = new Paging(Common.connection, "KhachHang", "KhachHangId desc");
+                QLVTDataSet.KhachHangDataTable khachHangs = new QLVTDataSet.KhachHangDataTable();
 
-            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+
+                DataTable dataTable = page.getPage(p);
+                if (dataTable != null)
+                {
+                    khachHangs.Merge(dataTable);
+                }
+                dgContent.ItemsSource = khachHangs;
+                tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void redo()
@@ -81,7 +104,16 @@ namespace WpfApp2
         {
             QLVTDataSetTableAdapters.KhachHangTableAdapter khachHangTableAdapter = Common.KhachHangTableAdapter;
             khachHangTableAdapter.Connection = Common.connection;
-            return khachHangTableAdapter.Update((QLVTDataSet.KhachHangDataTable)dgContent.ItemsSource);
+            int rs = 0;
+            try
+            {
+                rs= khachHangTableAdapter.Update((QLVTDataSet.KhachHangDataTable)dgContent.ItemsSource); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rs;
         }
 
         private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -93,7 +125,8 @@ namespace WpfApp2
         {
             if (update() > 0)
             {
-                Common.ShowMessage("Saved!");
+                loadData(0);
+                MessageBox.Show("Saved!");  
             };
         }
 
@@ -136,7 +169,7 @@ namespace WpfApp2
                 p--;
                 if (p < 0 || p > page.totalPage)
                 {
-                    Common.ShowMessage("Page not found!");
+                    MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -146,7 +179,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Invalid number format!");
+                MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -155,7 +188,7 @@ namespace WpfApp2
             int p = page.currentIndex - 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -170,7 +203,7 @@ namespace WpfApp2
             int p = page.currentIndex + 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -208,7 +241,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
 
         }
@@ -221,7 +254,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
         }
     }

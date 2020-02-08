@@ -1,4 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,7 +12,6 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        public String Name { get; set; }
 
         public MainWindow()
         {
@@ -29,49 +28,58 @@ namespace WpfApp2
             cbxCN.DisplayMemberPath = "Ten";
             cbxCN.SelectedValuePath = "ChiNhanhId";
             cbxCN.SelectedIndex = 0;
+
+            this.DataContext = new ViewModel();
+
         }
 
+        private void ForceValidation()
+        {
+            tbxUsername.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            //tbxPass.GetBindingExpression(PasswordBox.DataContextProperty).UpdateSource();
+        }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //ForceValidation();
-
-            string username = (string)tbxUsername.Text;
-            string pass = (string)tbxPass.Password;
-
-            Common.Database = Common.GetDatabase0;
-            Common.Server = ((string)Common.CurrentChiNhanh);
-            Common.Userid = username;
-            Common.Password = pass;
-
-            string connectionString = Common.buildConnectionString();
-            try
+            ForceValidation();
+            if (!Validation.GetHasError(tbxUsername)&& !Validation.GetHasError(tbxPass))
             {
-                if (Common.IsServerConnected(connectionString))
+                string username = (string)tbxUsername.Text;
+                string pass = (string)tbxPass.Password;
+
+                Common.Database = Common.GetDatabase0;
+                Common.Server = ((string)Common.CurrentChiNhanh);
+                Common.Userid = username;
+                Common.Password = pass;
+
+                string connectionString = Common.buildConnectionString();
+                try
                 {
-                    this.Hide();
-                    Common.LoginChiNhanhName = cbxCN.Text;
-                    Common.connection = new SqlConnection(connectionString);
-                    MainContentWindow.Signleton.cbxCN.ItemsSource = this.cbxCN.ItemsSource;
-                    MainContentWindow.Signleton.cbxCN.SelectedValuePath = this.cbxCN.SelectedValuePath;
-                    MainContentWindow.Signleton.cbxCN.DisplayMemberPath = this.cbxCN.DisplayMemberPath;
-                    MainContentWindow.Signleton.cbxCN.SelectedIndex = this.cbxCN.SelectedIndex;
+                    if (Common.IsServerConnected(connectionString))
+                    {
+                        //this.Hide();
+                        Common.LoginChiNhanhName = cbxCN.Text;
+                        Common.connection = new SqlConnection(connectionString);
+                        MainContentWindow.Signleton.cbxCN.ItemsSource = this.cbxCN.ItemsSource;
+                        MainContentWindow.Signleton.cbxCN.SelectedValuePath = this.cbxCN.SelectedValuePath;
+                        MainContentWindow.Signleton.cbxCN.DisplayMemberPath = this.cbxCN.DisplayMemberPath;
+                        MainContentWindow.Signleton.cbxCN.SelectedIndex = this.cbxCN.SelectedIndex;
 
-                    MainContentWindow.Signleton.Show();
+                        MainContentWindow.Signleton.Show();
 
-                    MainContentWindow.Signleton.Closed += (o, ev) => { System.Windows.Application.Current.Shutdown(); };
+                        MainContentWindow.Signleton.Closed += (o, ev) => { System.Windows.Application.Current.Shutdown(); };
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng nhập không thành công");
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    Common.ShowMessage("Đăng nhập không thành công", "MainDialog");
+                    MessageBox.Show("Đã xãy ra lỗi trong quá trình đăng nhập");
                 }
-
             }
-            catch (Exception ex)
-            {
-                Common.ShowMessage("Đã xãy ra lỗi trong quá trình đăng nhập", "MainDialog");
-            }
-
         }
 
 
@@ -84,7 +92,8 @@ namespace WpfApp2
             string sv = (string)rows[0]["subscriber_server"];
             Common.CurrentChiNhanh = sv;
             Common.CurrentChiNhanhId = cbxCN.SelectedValue;
-           
+            Common.CurrentCNName  = ((DataRowView)cbxCN.SelectedItem).Row["Ten"].ToString();
+
             Common.Database = (Common.GetDatabase0);
             Common.Server = ((string)Common.CurrentChiNhanh);
             Common.Userid = (Common.GetUserid0);
@@ -99,13 +108,13 @@ namespace WpfApp2
                 }
                 else
                 {
-                    Common.ShowMessage("Lỗi kết nối", "MainDialog");
+                    MessageBox.Show("Lỗi kết nối");
                 }
 
             }
             catch (Exception ex)
             {
-                Common.ShowMessage("Lỗi kết nối", "MainDialog");
+                MessageBox.Show("Lỗi kết nối");
             }
         }
     }

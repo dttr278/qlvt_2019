@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\vb9\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="1.36">
+ <Targets>
+  <Target Name="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV\bin\Release\QUANLYDIEMSV.exe">
+   <Modules>
+    <Module Name="quanlydiemsv.exe">
+     <Messages>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'QUANLYDIEMSV.exe' with a strong name key.</Issue>
+      </Message>
+      <Message Id="QUANLYDIEMSV" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+       <Issue Name="Assembly" Certainty="85" Level="Error">Correct the casing of 'QUANLYDIEMSV' in assembly name 'QUANLYDIEMSV.exe' by changing it to 'Quanlydiemsv'.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Error">Mark 'QUANLYDIEMSV.exe' with CLSCompliant(true) because it exposes externally visible types.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Warning">Because assembly 'QUANLYDIEMSV.exe' contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="QUANLYDIEMSV">
+       <Types>
+        <Type Name="Cachedrpt_DSLOP_1KHOA" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSLOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSLOP' in type name 'Cachedrpt_DSLOP_1KHOA' by changing it to 'Dslop'.</Issue>
+          </Message>
+          <Message Id="KHOA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'KHOA' in type name 'Cachedrpt_DSLOP_1KHOA' by changing it to 'Khoa'.</Issue>
+          </Message>
+          <Message Id="Cachedrpt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Cachedrpt' in type name 'Cachedrpt_DSLOP_1KHOA'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove the underscores from type name 'Cachedrpt_DSLOP_1KHOA'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Cachedrpt_DSSV_1LOP" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSSV" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSSV' in type name 'Cachedrpt_DSSV_1LOP' by changing it to 'Dssv'.</Issue>
+          </Message>
+          <Message Id="LOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'LOP' in type name 'Cachedrpt_DSSV_1LOP' by changing it to 'Lop'.</Issue>
+          </Message>
+          <Message Id="Cachedrpt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Cachedrpt' in type name 'Cachedrpt_DSSV_1LOP'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove the underscores from type name 'Cachedrpt_DSSV_1LOP'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Frmgv" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmgv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmgv' in type name 'Frmgv'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Btnghi_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmgv.vb" Line="43">Modify 'Frmgv.Btnghi_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmgv.vb" Line="62">Modify 'Frmgv.Btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Frmkhdaotao" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmkhdaotao" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmkhdaotao' in type name 'Frmkhdaotao'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Btnghi_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmkhdaotao.vb" Line="58">Modify 'Frmkhdaotao.Btnghi_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmkhdaotao.vb" Line="73">Modify 'Frmkhdaotao.Btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Frmkhoa" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmkhoa" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmkhoa' in type name 'Frmkhoa'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmkhoa.vb" Line="48">Modify 'Frmkhoa.Btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="frmlop" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="frmlop" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'frmlop' in type name 'frmlop' by changing it to 'Frmlop'.</Issue>
+          </Message>
+          <Message Id="frmlop" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'frmlop' in type name 'frmlop'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#btnghi_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="frmlop.vb" Line="60">Modify 'frmlop.btnghi_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Frmmenu" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmmenu" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmmenu' in type name 'Frmmenu'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#SINHVIENToolStripMenuItem_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="frmmenu" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmmenu.vb" Line="92">'Frmmenu.SINHVIENToolStripMenuItem_Click(Object, EventArgs)' declares a variable, 'frmmenu', of type 'Frmsv', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Frmmonhoc" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmmonhoc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmmonhoc' in type name 'Frmmonhoc'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmmonhoc.vb" Line="52">Modify 'Frmmonhoc.btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Frmnganh" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmnganh" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmnganh' in type name 'Frmnganh'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmnganh.vb" Line="52">Modify 'Frmnganh.Btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="frmNhapDiem" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="frm" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'frm' in type name 'frmNhapDiem' by changing it to 'Frm'.</Issue>
+          </Message>
+          <Message Id="Nhap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Nhap' in type name 'frmNhapDiem'.</Issue>
+          </Message>
+          <Message Id="frm" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'frm' in type name 'frmNhapDiem'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Frmsv" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Frmsv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frmsv' in type name 'Frmsv'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Btnghi_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmsv.vb" Line="59">Modify 'Frmsv.Btnghi_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Btnxoa_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Frmsv.vb" Line="74">Modify 'Frmsv.Btnxoa_Click(Object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="frmThongBao" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="frm" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'frm' in type name 'frmThongBao' by changing it to 'Frm'.</Issue>
+          </Message>
+          <Message Id="Bao" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Bao' in type name 'frmThongBao'.</Issue>
+          </Message>
+          <Message Id="frm" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'frm' in type name 'frmThongBao'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="FrptDSLOP1KHOA" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSLOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSLOP' in type name 'FrptDSLOP1KHOA' by changing it to 'Dslop'.</Issue>
+          </Message>
+          <Message Id="KHOA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'KHOA' in type name 'FrptDSLOP1KHOA' by changing it to 'Khoa'.</Issue>
+          </Message>
+          <Message Id="Frpt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frpt' in type name 'FrptDSLOP1KHOA'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="FrptDSSV1LOP" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSSV" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSSV' in type name 'FrptDSSV1LOP' by changing it to 'Dssv'.</Issue>
+          </Message>
+          <Message Id="LOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'LOP' in type name 'FrptDSSV1LOP' by changing it to 'Lop'.</Issue>
+          </Message>
+          <Message Id="Frpt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Frpt' in type name 'FrptDSSV1LOP'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Module1" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetListLogin()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="42">'Module1.GetListLogin()' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#KetNoi(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="32">Modify 'Module1.KetNoi(String)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#mHoten" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Module1.mHoten' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#mPhucHoi" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Module1.mPhucHoi' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NhapkySo_vachamphay(System.Char)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="86">'Module1.NhapkySo_vachamphay(Char)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NhapKySoVaDauCham(System.Char,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="102">'Module1.NhapKySoVaDauCham(Char, String)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetEnableOfButton(System.Windows.Forms.Form,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="120">'Module1.SetEnableOfButton(Form, Boolean)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetEnableOfComBox(System.Windows.Forms.Form,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="144">'Module1.SetEnableOfComBox(Form, Boolean)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetEnableOfTextBox(System.Windows.Forms.Form,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="Module1.vb" Line="132">'Module1.SetEnableOfTextBox(Form, Boolean)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#strDSN" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Module1.strDSN' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="rpt_DSLOP_1KHOA" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSLOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSLOP' in type name 'rpt_DSLOP_1KHOA' by changing it to 'Dslop'.</Issue>
+          </Message>
+          <Message Id="KHOA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'KHOA' in type name 'rpt_DSLOP_1KHOA' by changing it to 'Khoa'.</Issue>
+          </Message>
+          <Message Id="rpt" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'rpt' in type name 'rpt_DSLOP_1KHOA' by changing it to 'Rpt'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove the underscores from type name 'rpt_DSLOP_1KHOA'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Parameter_makhoa" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="makhoa" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSLOP_1KHOA.vb" Line="99">Correct the casing of 'makhoa' in member name 'rpt_DSLOP_1KHOA.Parameter_makhoa()' by changing it to 'Makhoa'.</Issue>
+            </Message>
+            <Message Id="makhoa" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSLOP_1KHOA.vb" Line="99">Correct the spelling of 'makhoa' in member name 'rpt_DSLOP_1KHOA.Parameter_makhoa()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSLOP_1KHOA.vb" Line="99">Remove the underscores from member name 'rpt_DSLOP_1KHOA.Parameter_makhoa()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="rpt_DSSV_1LOP" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="DSSV" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'DSSV' in type name 'rpt_DSSV_1LOP' by changing it to 'Dssv'.</Issue>
+          </Message>
+          <Message Id="LOP" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'LOP' in type name 'rpt_DSSV_1LOP' by changing it to 'Lop'.</Issue>
+          </Message>
+          <Message Id="rpt" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'rpt' in type name 'rpt_DSSV_1LOP' by changing it to 'Rpt'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove the underscores from type name 'rpt_DSSV_1LOP'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Parameter_malop" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="malop" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSSV_1LOP.vb" Line="99">Correct the casing of 'malop' in member name 'rpt_DSSV_1LOP.Parameter_malop()' by changing it to 'Malop'.</Issue>
+            </Message>
+            <Message Id="malop" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSSV_1LOP.vb" Line="99">Correct the spelling of 'malop' in member name 'rpt_DSSV_1LOP.Parameter_malop()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2011-04-27 04:06:53Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="D:\chuchu\THI\QUANLYDIEMSV\QUANLYDIEMSV" File="rpt_DSSV_1LOP.vb" Line="99">Remove the underscores from member name 'rpt_DSSV_1LOP.Parameter_malop()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182127(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Avoid uncalled private code</Name>
+   <Description>There is uncalled code that is not externally visible and is not a known runtime entry point. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182264(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Avoid unused private fields</Name>
+   <Description>Private fields were detected that do not appear to be accessed within the assembly. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms245042(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182137(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are Pascal-cased. Parameter identifiers are camel-cased. Two letter acronyms within these identifiers should be upper-cased, for example, use System.IO instead of System.Io. Acronyms of three or more letters should be Pascal-cased, for example, use System.Xml instead of System.XML. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Assembly">Correct the casing of '{0}' in assembly name {1} by changing it to '{2}'.</Resolution>
+   <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+   <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182240(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+   <Name>Identifiers should be spelled correctly</Name>
+   <Description>The individual words that make up an identifier should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb264492(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+   <Name>Identifiers should not contain underscores</Name>
+   <Description>Do not use underscores when specifying identifiers. Some generated Visual Studio identifiers for applications contain underscore characters. Underscore characters should generally be avoided in public identifiers.</Description>
+   <Resolution Name="Member">Remove the underscores from member name {0}.</Resolution>
+   <Resolution Name="Type">Remove the underscores from type name {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182245(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+   <Name>Mark assemblies with CLSCompliantAttribute</Name>
+   <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant. Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</Description>
+   <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182156(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
+   <Name>Mark assemblies with NeutralResourcesLanguageAttribute</Name>
+   <Description>The NeutralResourcesLanguage attribute informs the ResourceManager of the language used to render the neutral culture's resources for an assembly. When looking up resources in the same culture as the neutral resources language, the ResourceManager automatically uses the resources located in the main assembly, instead of searching for a satellite assembly with the current user interface culture for the current thread. This will improve lookup performance for the first resource you load and can reduce your working set.</Description>
+   <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/bb385967(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+  <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+   <Name>Remove unused locals</Name>
+   <Description>Remove locals that are not used or are only assigned to in method implementations.</Description>
+   <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn2.microsoft.com/ms182278(VS.90).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="9.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

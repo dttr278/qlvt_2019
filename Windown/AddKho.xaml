@@ -12,8 +12,24 @@
         <materialDesign:Card Padding="32" Margin="16,16,16,10" VerticalAlignment="Stretch">
             <Grid>
                 <TextBlock Name="tblTitle" FontSize="24" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Margin="53,10,52,0" TextWrapping="Wrap" Text="Thêm kho" VerticalAlignment="Top" Height="46" Width="431"/>
-                <TextBox materialDesign:HintAssist.Hint="Tên kho" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbTenKho" HorizontalAlignment="Left" Height="40" Margin="53,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478"/>
-                <TextBox materialDesign:HintAssist.Hint="Vị trí" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbViTriKho" HorizontalAlignment="Left" Height="39" Margin="53,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Tên kho" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbTenKho" HorizontalAlignment="Left" Height="40" Margin="53,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="Ten"  UpdateSourceTrigger="Explicit" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox materialDesign:HintAssist.Hint="Vị trí" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbViTriKho" HorizontalAlignment="Left" Height="39" Margin="53,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="ViTri"  UpdateSourceTrigger="Explicit" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <Button Name="btnOk" Click="btnOk_Click" Content="Ok" HorizontalAlignment="Left" Margin="409,211,0,0" VerticalAlignment="Top" Width="75"/>
                 
             </Grid>

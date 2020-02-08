@@ -46,7 +46,6 @@
         <DataGrid Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã khách hàng" Binding="{Binding KhachHangId}"/>
-                <DataGridTextColumn Header="Họ" Binding="{Binding Ho}" />
                 <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
                 <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}" />
                 <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDienThoai}" />

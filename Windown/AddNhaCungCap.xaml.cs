@@ -37,41 +37,53 @@ namespace WpfApp2
         private AddNhaCungCap()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel();
             EventHandler eventHandler = (o, i) => { signleton = new AddNhaCungCap(); };
             this.Closed += eventHandler;
         }
         public AddNhaCungCap(DataRow row)
         {
             InitializeComponent();
-
+            ViewModel d = new ViewModel();
             Id = (Int64)row["NhaCungCapId"];
-            txbTen.Text = (string)row["Ten"];
+            d.Ten = txbTen.Text = (string)row["Ten"];
             txbSDT.Text = (string)row["SoDienThoai"];
             txbDiaChi.Text = (string)row["DiaChi"];
             this.row = row;
             tblTitle.Text = "ID:" + row["NhaCungCapId"].ToString();
+            this.DataContext = d;
         }
-
+        private void ForceValidation()
+        {
+            txbTen.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+          
+        }
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (row == null)
-            {
-                QLVTDataSet.NhaCungCapDataTable nhaCungCaps = (QLVTDataSet.NhaCungCapDataTable)dataGrid.ItemsSource;
+            ForceValidation();
+            if (!Validation.GetHasError(txbTen)){
+                if (row == null)
+                {
+                    QLVTDataSet.NhaCungCapDataTable nhaCungCaps = (QLVTDataSet.NhaCungCapDataTable)dataGrid.ItemsSource;
 
-                DataRow row = nhaCungCaps.NewRow();
-                row["Ten"] = txbTen.Text;
-                row["SoDienThoai"] = txbSDT.Text;
-                row["DiaChi"] = txbDiaChi.Text;
-                row["NhaCungCapId"] = Common.genId--;
-                nhaCungCaps.Rows.Add(row);
-                this.Close();
-            }
-            else
-            {
-                row["Ten"] = txbTen.Text;
-                row["SoDienThoai"] = txbSDT.Text;
-                row["DiaChi"] = txbDiaChi.Text;
-                this.Close();
+                    DataRow row = nhaCungCaps.NewRow();
+                    row["Ten"] = txbTen.Text;
+                    row["SoDienThoai"] = txbSDT.Text;
+                    row["DiaChi"] = txbDiaChi.Text;
+                    row["NhaCungCapId"] = Common.genId--;
+                    nhaCungCaps.Rows.Add(row);
+
+                    txbTen.Text = txbSDT.Text = txbDiaChi.Text= "";
+                    MessageBox.Show("Đã thêm!");
+                    //this.Close();
+                }
+                else
+                {
+                    row["Ten"] = txbTen.Text;
+                    row["SoDienThoai"] = txbSDT.Text;
+                    row["DiaChi"] = txbDiaChi.Text;
+                    this.Close();
+                }
             }
         }
     }

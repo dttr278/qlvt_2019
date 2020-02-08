@@ -33,6 +33,10 @@
                     <materialDesign:PackIcon Kind="Redo"/>
                 </Button>
                 <Separator/>
+                <Button x:Name="btnAddLogin" Click="btnAddLogin_Click" VerticalAlignment="Top">
+                    <materialDesign:PackIcon Kind="Register"/>
+                </Button>
+                <Separator/>
                 <TextBox materialDesign:HintAssist.Hint="Tìm theo mã nhân viên" Name="txbSearch" Padding="0 0 0 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Margin="0 0 0 0"/>
                 <Button Name="btnSearch" Click="btnSearch_Click" VerticalAlignment="Center" Padding="0">
                     <materialDesign:PackIcon Kind="Search"/>

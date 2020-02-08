@@ -1,0 +1,19 @@
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\bin\Debug\QUANLYVATTU_PHANTAN.exe
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\bin\Debug\QUANLYVATTU_PHANTAN.pdb
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmDangNhap.resources
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmMain.resources
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.Properties.Resources.resources
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.exe.licenses
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.exe
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.pdb
+c:\users\vaio\documents\visual studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\bin\Debug\QUANLYVATTU_PHANTAN.exe.config
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmNHANVIEN.resources
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmInDanhSachPhieuNVLapTrongNamTheoLoai.resources
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.csprojResolveAssemblyReference.cache
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.csproj.GenerateResource.Cache
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmNV_vidu.resources
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frmLapPhieu.resources
+C:\Users\vaio\Documents\Visual Studio 2010\Projects\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.resources
+D:\GiaoTrinh\CSDL_PhanTan\CSDLPT\Demo\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\bin\Debug\QUANLYVATTU_PHANTAN.exe.config
+D:\GiaoTrinh\CSDL_PhanTan\CSDLPT\Demo\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.exe
+D:\GiaoTrinh\CSDL_PhanTan\CSDLPT\Demo\QUANLYVATTU_PHANTAN\QUANLYVATTU_PHANTAN\obj\Debug\QUANLYVATTU_PHANTAN.pdb

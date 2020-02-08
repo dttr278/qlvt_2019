@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Data;
+using System.Globalization;
 using System.Windows.Controls;
 
 namespace WpfApp2
@@ -8,34 +10,43 @@ namespace WpfApp2
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value == null)
-                return new ValidationResult(false, "Value cannot be empty.");
+                return new ValidationResult(false, "Vui lòng nhập một giá trị.");
             else
             {
                 if (value.ToString().Trim().Length == 0)
-                    return new ValidationResult(false, "Value cannot be empty.");
+                    return new ValidationResult(false, "Vui lòng nhập một giá trị.");
             }
             return ValidationResult.ValidResult;
         }
     }
-    class AwayFalse : ValidationRule
+    class AgeValidator : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            return new ValidationResult(false, "moahahahaha");
+            if (value == null||!(value is DateTime))
+            {
+                return new ValidationResult(false, "Vui lòng nhập một giá trị.");
+            }
+            DateTime b = (DateTime)value;
+            if (((DateTime.Now.Year -b.Year)*12+ DateTime.Now.Month - b.Month) / 12 < 18)
+            {
+                return new ValidationResult(false, "Ngày sinh không hợp lệ(tuổi nhỏ hơn 18).");
+            }
+            return ValidationResult.ValidResult;
         }
     }
-    public class MinimumCharacterRule : ValidationRule
+    class DataTableLengthValidator : ValidationRule
     {
-        public int MinimumCharacters { get; set; }
-
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            string charString = value as string;
 
-            if (charString.Length < MinimumCharacters)
-                return new ValidationResult(false, $"User atleast {MinimumCharacters} characters.");
+            if (value == null ||!(value is DataTable) || ((DataTable)value).Rows.Count<=0)
+            {
+                return new ValidationResult(false, "Vui lòng nhập một giá trị.");
+            }
 
-            return new ValidationResult(true, null);
+            return ValidationResult.ValidResult;
         }
     }
+
 }

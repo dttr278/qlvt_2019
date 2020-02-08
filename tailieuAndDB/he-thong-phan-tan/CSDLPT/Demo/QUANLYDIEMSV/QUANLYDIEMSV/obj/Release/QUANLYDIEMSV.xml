@@ -1,0 +1,155 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QUANLYDIEMSV
+</name>
+</assembly>
+<members>
+<member name="T:QUANLYDIEMSV.DS.LOPDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.SINHVIENDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.GIAOVIENDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.MONHOCDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.NGANHDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KEHOACHDAOTAODataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.DIEMDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.Sp_DSSVDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KHOADataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.LOPRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.SINHVIENRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.GIAOVIENRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.MONHOCRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.NGANHRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KEHOACHDAOTAORow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.DIEMRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.Sp_DSSVRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KHOARow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.LOPRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.SINHVIENRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.GIAOVIENRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.MONHOCRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.NGANHRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KEHOACHDAOTAORowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.DIEMRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.Sp_DSSVRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS.KHOARowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QUANLYDIEMSV.DS">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.LOPTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.SINHVIENTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.GIAOVIENTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.MONHOCTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.NGANHTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.KEHOACHDAOTAOTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.DIEMTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QUANLYDIEMSV.DSTableAdapters.Sp_DSSVTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+</members>
+</doc>

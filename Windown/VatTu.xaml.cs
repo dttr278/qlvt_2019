@@ -33,6 +33,23 @@ namespace WpfApp2
         private VatTu()
         {
             InitializeComponent();
+            switch (Common.CurrentRole)
+            {
+                case Common.RoleNhanVien:
+                    break;
+                case Common.RoleChiNhanh:
+                    break;
+                case Common.RoleCongTy:
+                    btnAdd.IsEnabled = false;
+                    btnEdit.IsEnabled = false;
+                    btnRemove.IsEnabled = false;
+                    btnSave.IsEnabled = false;
+                    btnUndo.IsEnabled = false;
+                    btnRedo.IsEnabled = false;
+                    break;
+                default:
+                    break;
+            }
             try
             {
                 loadData(0);
@@ -40,7 +57,7 @@ namespace WpfApp2
             }
             catch (Exception ex)
             {
-                Common.ShowMessage(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         public void add()
@@ -63,22 +80,29 @@ namespace WpfApp2
 
         public void loadData(int p)
         {
-            Common.LoaiHangTableAdapter.Connection = Common.connection;
-            Common.LoaiHangTableAdapter.Fill(Common.LoaiHangDataTable);
-
-            page = new Paging(Common.connection, "MatHang", "MatHangId desc");
-            QLVTDataSet.MatHangDataTable VatTus = new QLVTDataSet.MatHangDataTable();
-
-
-            DataTable dataTable = page.getPage(p);
-            if (dataTable != null)
+            try
             {
-                VatTus.Merge(dataTable);
-            }
-            dgContent.ItemsSource = VatTus;
-            tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+                Common.LoaiHangTableAdapter.Connection = Common.connection;
+                Common.LoaiHangTableAdapter.Fill(Common.LoaiHangDataTable);
 
-            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+                page = new Paging(Common.connection, "MatHang", "MatHangId desc");
+                QLVTDataSet.MatHangDataTable VatTus = new QLVTDataSet.MatHangDataTable();
+
+
+                DataTable dataTable = page.getPage(p);
+                if (dataTable != null)
+                {
+                    VatTus.Merge(dataTable);
+                }
+                dgContent.ItemsSource = VatTus;
+                tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void redo()
@@ -95,7 +119,16 @@ namespace WpfApp2
         {
             QLVTDataSetTableAdapters.MatHangTableAdapter MatHangTableAdapter = Common.MatHangTableAdapter;
             MatHangTableAdapter.Connection = Common.connection;
-            return MatHangTableAdapter.Update((QLVTDataSet.MatHangDataTable)dgContent.ItemsSource);
+            int rs = 0;
+            try
+            {
+                rs = MatHangTableAdapter.Update((QLVTDataSet.MatHangDataTable)dgContent.ItemsSource);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rs;
         }
 
         private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -107,7 +140,8 @@ namespace WpfApp2
         {
             if (update() > 0)
             {
-                Common.ShowMessage("Saved!");
+                MessageBox.Show("Saved!");
+                loadData(0);
             };
         }
 
@@ -150,7 +184,7 @@ namespace WpfApp2
                 p--;
                 if (p < 0 || p > page.totalPage)
                 {
-                    Common.ShowMessage("Page not found!");
+                    MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -160,7 +194,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Invalid number format!");
+                MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -169,7 +203,7 @@ namespace WpfApp2
             int p = page.currentIndex - 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -184,7 +218,7 @@ namespace WpfApp2
             int p = page.currentIndex + 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -222,7 +256,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
 
         }
@@ -235,7 +269,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
         }
     }

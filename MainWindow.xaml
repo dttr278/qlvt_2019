@@ -14,26 +14,34 @@
                         <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="-6.688,-0.625"/>
                     </InlineUIContainer>
                 </TextBlock>
-                <TextBox materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxUsername" HorizontalAlignment="Left" Height="39" Margin="50,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202">
-                    <!--<TextBox.Text>
-                        <Binding Path="Name"   Mode="TwoWay"  UpdateSourceTrigger="LostFocus" >
+                <TextBox  materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxUsername" HorizontalAlignment="Left" Height="39" Margin="50,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202">
+                    <TextBox.Text>
+                        <Binding Path="Login"  UpdateSourceTrigger="Default" >
                             <Binding.ValidationRules>
                                 <local:ReqireValidator/>
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>-->
+                    </TextBox.Text>
                 </TextBox>
                 <TextBlock HorizontalAlignment="Left" Margin="25,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="20">
                     <InlineUIContainer>
                         <materialDesign:PackIcon Kind="TextboxPassword"/>
                     </InlineUIContainer>
                 </TextBlock>
-                <PasswordBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="tbxPass" HorizontalAlignment="Left" Height="42" Margin="50,108,0,0" VerticalAlignment="Top" Width="202"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="tbxPass" HorizontalAlignment="Left" Height="42" Margin="50,108,0,0" VerticalAlignment="Top" Width="202">
+                    <!--<PasswordBox.Password>
+                        <Binding Path="Password"  UpdateSourceTrigger="Default" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </PasswordBox.Password>-->
+                </PasswordBox>
                 <ComboBox SelectionChanged="cbxCN_SelectionChanged" Name="cbxCN" HorizontalAlignment="Left" Margin="50,166,0,0" VerticalAlignment="Top" Width="105" RenderTransformOrigin="0.284,-0.295"/>
                 <Button Content="Login" Name="btnLogin" Click="btnLogin_Click" HorizontalAlignment="Left" Margin="177,166,0,0" VerticalAlignment="Top" Width="75" Height="28"/>
             </Grid>
         </materialDesign:Card>
-        <materialDesign:DialogHost Identifier="MainDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>
+        <!--<materialDesign:DialogHost Identifier="MainDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>-->
 
     </Grid>
 </Window>

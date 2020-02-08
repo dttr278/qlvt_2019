@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp2.AddLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        Title="LoginInfo" Height="399.687" Width="382" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Grid >
+            <TextBox Name="tbxLogin" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Margin="59,90,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="262"/>
+            <PasswordBox Name="tbxPass" materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Margin="59,144,0,0" VerticalAlignment="Top" Width="262"/>
+            <PasswordBox Name="tbxRePass" materialDesign:HintAssist.Hint="Nhập lại mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Margin="59,202,0,0"  VerticalAlignment="Top" Width="262"/>
+            <Button Name="btnOk" Click="btnOk_Click" Content="Ok" HorizontalAlignment="Left" Margin="143,302,0,0" VerticalAlignment="Top" Width="75"/>
+            <Label Content="Thêm login" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="354"/>
+            <Label Content="Mã nhân viên: " HorizontalAlignment="Left" Margin="59,59,0,0" VerticalAlignment="Top" Width="84"/>
+            <Label Name="lbId" Content="Label" HorizontalAlignment="Left" Margin="143,59,0,0" VerticalAlignment="Top" Width="178"/>
+            <ComboBox Name="cbxRole"  HorizontalAlignment="Left" Margin="149,251,0,0" VerticalAlignment="Top" Width="172"/>
+            <Label Content="Nhóm quyền: " HorizontalAlignment="Left" Margin="59,253,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>

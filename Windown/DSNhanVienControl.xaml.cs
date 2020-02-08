@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -26,19 +27,37 @@ namespace WpfApp2
         private DSNhanVienControl()
         {
             InitializeComponent();
+            switch (Common.CurrentRole)
+            {
+                case Common.RoleNhanVien:
+                    btnAddLogin.IsEnabled =false;
+                    break;
+                case Common.RoleChiNhanh:
+                    break;
+                case Common.RoleCongTy:
+                    btnAdd.IsEnabled = false;
+                    btnEdit.IsEnabled = false;
+                    btnRemove.IsEnabled = false;
+                    btnSave.IsEnabled = false;
+                    btnUndo.IsEnabled = false;
+                    btnRedo.IsEnabled = false;
+                    break;
+                default:
+                    break;
+            }
             try
             {
                 loadData(0);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Common.ShowMessage(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
         public void add()
         {
-           
+
             AddNhanVienWindow.Singleton.dataGrid = dgContent;
             AddNhanVienWindow.Singleton.Hide();
             AddNhanVienWindow.Singleton.Show();
@@ -57,20 +76,26 @@ namespace WpfApp2
 
         public void loadData(int p)
         {
-            page = new Paging(Common.connection, "NhanVien where TrangThai = 0", "NhanVienId desc");
-            QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
-            nhanViens.Rows.Clear();
-
-            DataTable dataTable = page.getPage(p);
-            if (dataTable != null)
+            try
             {
-                nhanViens.Merge(dataTable);
-               
+                page = new Paging(Common.connection, "NhanVien where TrangThai = 0", "NhanVienId desc");
+                QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
+                nhanViens.Rows.Clear();
+
+                DataTable dataTable = page.getPage(p);
+                if (dataTable != null)
+                {
+                    nhanViens.Merge(dataTable);
+
+                }
+                nhanViens.DefaultView.RowFilter = "TrangThai <> 1";
+                dgContent.ItemsSource = nhanViens;
+                tableLog = new DataTableLog((DataTable)nhanViens);
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
-            nhanViens.DefaultView.RowFilter = "TrangThai <> 1";
-            dgContent.ItemsSource = nhanViens;
-            tableLog = new DataTableLog((DataTable)nhanViens);
-            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
 
 
         }
@@ -89,7 +114,14 @@ namespace WpfApp2
         {
             QLVTDataSetTableAdapters.NhanVienTableAdapter nhanVienTableAdapter = Common.NhanVienTableAdapter;
             nhanVienTableAdapter.Connection = Common.connection;
-            return nhanVienTableAdapter.Update((QLVTDataSet.NhanVienDataTable)dgContent.ItemsSource);
+            int rs = 0;
+            try{
+                rs = nhanVienTableAdapter.Update((QLVTDataSet.NhanVienDataTable)dgContent.ItemsSource);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rs;
         }
 
         private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -99,9 +131,19 @@ namespace WpfApp2
 
         private void btnSave_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (update() > 0) {
-                Common.ShowMessage("Saved!");
-            };
+            try
+            {
+                if (update() > 0)
+                {
+                    loadData(0);
+                    MessageBox.Show("Saved!");
+                };
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Có lỗi sảy ra trong quá trình cập nhật dữ liệu!");
+            }
+
         }
 
         private void btnUndo_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -143,7 +185,7 @@ namespace WpfApp2
                 p--;
                 if (p < 0 || p > page.totalPage)
                 {
-                    Common.ShowMessage("Page not found!");
+                    MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -153,7 +195,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Invalid number format!");
+                MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -162,7 +204,7 @@ namespace WpfApp2
             int p = page.currentIndex - 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -177,7 +219,7 @@ namespace WpfApp2
             int p = page.currentIndex + 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -191,7 +233,7 @@ namespace WpfApp2
         {
             if (txbSearch.Text.Length > 0)
             {
-                page = new Paging(Common.connection, "NhanVien where TrangThai = 0 and NhanVienId = '" + txbSearch.Text+"'", "NhanVienId desc");
+                page = new Paging(Common.connection, "NhanVien where TrangThai = 0 and NhanVienId = '" + txbSearch.Text + "'", "NhanVienId desc");
                 QLVTDataSet.NhanVienDataTable nhanViens = new QLVTDataSet.NhanVienDataTable();
                 nhanViens.Rows.Clear();
 
@@ -200,7 +242,7 @@ namespace WpfApp2
                 {
                     nhanViens.Merge(dataTable);
                     nhanViens.DefaultView.RowFilter = "TrangThai <> 1";
-                   
+
                 }
                 dgContent.ItemsSource = nhanViens;
                 tableLog = new DataTableLog((DataTable)nhanViens);
@@ -215,7 +257,7 @@ namespace WpfApp2
                 //}
                 //catch (Exception ex)
                 //{
-                //    Common.ShowMessage("Result not found!");
+                //    MessageBox.Show("Result not found!");
 
                 //}
 
@@ -224,17 +266,17 @@ namespace WpfApp2
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (dgContent.CurrentItem != null)
             {
                 tableLog.SetRowChange(((DataRowView)dgContent.CurrentItem).Row);
-                AddNhanVienWindow addNhanVienWindow=new AddNhanVienWindow(((DataRowView)dgContent.CurrentItem).Row);
+                AddNhanVienWindow addNhanVienWindow = new AddNhanVienWindow(((DataRowView)dgContent.CurrentItem).Row);
                 addNhanVienWindow.dataGrid = this.dgContent;
                 addNhanVienWindow.Show();
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
         }
 
@@ -248,9 +290,59 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có nhân viên nào được chọn!");
             }
-           
+
+        }
+
+        private void btnAddLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgContent.CurrentItem != null)
+            {
+                try
+                {
+                    string id = ((DataRowView)dgContent.CurrentItem).Row["NhanVienId"].ToString();
+                    if (id != null)
+                    {
+                        if (GetLogin(id) != null)
+                        {
+                            MessageBox.Show("Nhân viên đã có tài khoản đăng nhập!");
+                        }
+                        else
+                        {
+                            (new AddLogin(id)).Show();
+                        }
+                           
+                    }
+                    else
+                        MessageBox.Show("Username must be not null!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có nhân viên nào được chọn!");
+            }
+        }
+        string GetLogin(string manv)
+        {
+            string rs = null;
+            string sql = "SP_GET_LOGIN_FROM_USER";
+            SqlCommand commander = new SqlCommand(sql, Common.connection);
+            commander.CommandType = CommandType.StoredProcedure;
+            commander.Parameters.AddWithValue("@username", manv);
+
+            SqlDataReader reader = commander.ExecuteReader();
+
+            if (reader.Read() && reader.HasRows)
+            {
+                rs = reader.GetValue(0).ToString();
+                reader.Close();
+            }
+            return rs;
         }
     }
 }

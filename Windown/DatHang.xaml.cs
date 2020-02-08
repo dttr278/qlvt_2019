@@ -31,8 +31,19 @@ namespace WpfApp2
         }
         private DatHang()
         {
-
             InitializeComponent();
+            switch (Common.CurrentRole)
+            {
+                case Common.RoleNhanVien:
+                    break;
+                case Common.RoleChiNhanh:
+                    break;
+                case Common.RoleCongTy:
+                    btnAdd.IsEnabled = false;
+                    break;
+                default:
+                    break;
+            }
             btnRemove.IsEnabled = false;
             try
             {
@@ -40,7 +51,7 @@ namespace WpfApp2
             }
             catch (Exception ex)
             {
-                Common.ShowMessage(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -64,21 +75,29 @@ namespace WpfApp2
         }
         public void loadData(int p)
         {
-            Common.NhaCungCapTableAdapter.Connection = Common.CTDatHangTableAdapter.Connection = Common.NhanVienTableAdapter.Connection = Common.MatHangTableAdapter.Connection = Common.connection;
-            Common.NhaCungCapTableAdapter.Fill(Common.NhaCungCapDataTable);
-            Common.NhanVienTableAdapter.Fill(Common.NhanVienDataTable);
-            Common.MatHangTableAdapter.Fill(Common.MatHangDataTable);
-            Common.CTDatHangTableAdapter.Fill(Common.CTDatHangDataTable);
-
-            page = new Paging(Common.connection, "DatHang", "DatHangId desc");
-            QLVTDataSet.DatHangDataTable khos = new QLVTDataSet.DatHangDataTable();
-            DataTable dataTable = page.getPage(p);
-            if (dataTable != null)
+            try
             {
-                khos.Merge(dataTable);
+
+                Common.NhaCungCapTableAdapter.Connection = Common.CTDatHangTableAdapter.Connection = Common.NhanVienTableAdapter.Connection = Common.MatHangTableAdapter.Connection = Common.connection;
+                Common.NhaCungCapTableAdapter.Fill(Common.NhaCungCapDataTable);
+                Common.NhanVienTableAdapter.Fill(Common.NhanVienDataTable);
+                Common.MatHangTableAdapter.Fill(Common.MatHangDataTable);
+                Common.CTDatHangTableAdapter.Fill(Common.CTDatHangDataTable);
+
+                page = new Paging(Common.connection, "DatHang", "DatHangId desc");
+                QLVTDataSet.DatHangDataTable khos = new QLVTDataSet.DatHangDataTable();
+                DataTable dataTable = page.getPage(p);
+                if (dataTable != null)
+                {
+                    khos.Merge(dataTable);
+                }
+                dgContent.ItemsSource = khos;
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
             }
-            dgContent.ItemsSource = khos;
-            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void redo()
@@ -107,7 +126,7 @@ namespace WpfApp2
         //{
         //    if (update() > 0)
         //    {
-        //        Common.ShowMessage("Saved!");
+        //        MessageBox.Show("Saved!");
         //    };
         //}
 
@@ -150,7 +169,7 @@ namespace WpfApp2
                 p--;
                 if (p < 0 || p > page.totalPage)
                 {
-                    Common.ShowMessage("Page not found!");
+                    MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -160,7 +179,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Invalid number format!");
+                MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -169,7 +188,7 @@ namespace WpfApp2
             int p = page.currentIndex - 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -184,7 +203,7 @@ namespace WpfApp2
             int p = page.currentIndex + 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -220,7 +239,7 @@ namespace WpfApp2
         //    }
         //    else
         //    {
-        //        Common.ShowMessage("Không có hàng nào được chọn!");
+        //        MessageBox.Show("Không có hàng nào được chọn!");
         //    }
         //}
 
@@ -252,37 +271,37 @@ namespace WpfApp2
                     }
                     catch (Exception ex)
                     {
-                        Common.ShowMessage(ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 else if (result == System.Windows.Forms.DialogResult.No)
                 {
                     //no...
                 }
-               
+
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
         }
 
         private void dgContent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btnRemove.IsEnabled = false;
             if (dgContent.SelectedItem != null)
             {
                 String id = ((DataRow)((DataRowView)dgContent.SelectedItem).Row)["DatHangId"].ToString();
                 dgCTContent.ItemsSource = Common.CTDatHangDataTable.Select("DatHangId =" + id);
-                QLVTDataSet.PhieuNhapDataTable phieuNhaps = new QLVTDataSet.PhieuNhapDataTable();
-                Common.PhieuNhapTableAdapter.Connection = Common.connection;
-                Common.PhieuNhapTableAdapter.Fill(phieuNhaps);
-                if(phieuNhaps.Select("DatHangId = "+ id).Length > 0)
+                if (Common.CurrentRole != Common.RoleCongTy)
                 {
-                    btnRemove.IsEnabled = false;
-                }
-                else
-                {
-                    btnRemove.IsEnabled = true;
+                    QLVTDataSet.PhieuNhapDataTable phieuNhaps = new QLVTDataSet.PhieuNhapDataTable();
+                    Common.PhieuNhapTableAdapter.Connection = Common.connection;
+                    Common.PhieuNhapTableAdapter.Fill(phieuNhaps);
+                    if (phieuNhaps.Select("DatHangId = " + id).Length == 0 && dgCTContent.Items.Count == 0)
+                    {
+                        btnRemove.IsEnabled = true;
+                    }
                 }
             }
         }

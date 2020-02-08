@@ -19,16 +19,25 @@
                     <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
                     <DataGridTextColumn Header="Vị trí" Binding="{Binding ViTri}" />
                 </DataGrid.Columns>
+
+                <DataGrid.SelectedValue>
+                    <Binding Path="Kho" Mode="TwoWay"  UpdateSourceTrigger="Explicit" >
+                        <Binding.ValidationRules>
+                            <local:ReqireValidator/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.SelectedValue>
             </DataGrid>
 
 
             <TextBox KeyUp="txbVT_KeyUp" materialDesign:HintAssist.Hint="Tìm vật tư" x:Name="txbVT" Height="40" Margin="53,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.478" HorizontalAlignment="Left" Width="341"/>
             <TextBlock Margin="449,382,52,0" VerticalAlignment="Top">Chi tiết phiếu nhập</TextBlock>
             <Grid Margin="53,418,52,59">
-                <DataGrid Name="dgMatHang" AutoGenerateColumns="False" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Width="332" Margin="0,-20,0,0">
+                <DataGrid Name="dgCTDH" AutoGenerateColumns="False" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Width="332" Margin="0,-20,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Mã" Binding="{Binding MatHangId}" />
-                        <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" />
+                        <DataGridTextColumn Header="Tên vật tư" Binding="{Binding MatHangId, Converter={StaticResource matHangConverter}}" />
+                        <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" />
+                        <DataGridTextColumn Header="Đơn giá" Binding="{Binding DonGia ,Converter={StaticResource monneyConverter}}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DockPanel Margin="337,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="46"  >

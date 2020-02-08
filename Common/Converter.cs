@@ -162,4 +162,23 @@ namespace WpfApp2
             throw new NotImplementedException();
         }
     }
+    class NumberConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int v=-1;
+            int.TryParse(value.ToString(), out v);
+            if (v < 0)
+            {
+                v = 0;
+            }
+
+            return v;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
 }

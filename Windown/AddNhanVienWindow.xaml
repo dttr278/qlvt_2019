@@ -4,21 +4,45 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:WpfApp2" 
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="AddNhanVienWindow" Height="413.438" Width="639.5" WindowStartupLocation="CenterScreen">
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="AddNhanVienWindow" Height="425.438" Width="639.5" WindowStartupLocation="CenterScreen">
     <Grid>
         <materialDesign:Card Padding="32" Margin="16,16,16,10" VerticalAlignment="Stretch">
             <Grid>
                 <TextBlock Name="tblTitle" FontSize="24" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Margin="53,10,52,0" TextWrapping="Wrap" Text="Thêm nhân viên" VerticalAlignment="Top" Height="46" Width="431"/>
 
-                <TextBox materialDesign:HintAssist.Hint="Họ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxHo" HorizontalAlignment="Left" Height="40" Margin="53,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Họ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxHo" HorizontalAlignment="Left" Height="40" Margin="53,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="Ho" Mode="TwoWay"  UpdateSourceTrigger="Default" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
-                <TextBox materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxTen" HorizontalAlignment="Left" Height="39" Margin="282,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxTen" HorizontalAlignment="Left" Height="39" Margin="282,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478">
+                    <TextBox.Text>
+                        <Binding Path="Ten" Mode="TwoWay" UpdateSourceTrigger="Default" >
+                            <Binding.ValidationRules>
+                                <local:ReqireValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <ComboBox materialDesign:HintAssist.Hint="Giới tính" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Name="cbxPhai" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Width="202"/>
-                <DatePicker materialDesign:HintAssist.Hint="Ngày sinh" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Name="dpNgaySinh" HorizontalAlignment="Left" Margin="282,136,0,0" VerticalAlignment="Top" Width="202" Height="40"/>
+                <DatePicker materialDesign:HintAssist.Hint="Ngày sinh" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Name="dpNgaySinh" HorizontalAlignment="Left" Margin="282,136,0,0" VerticalAlignment="Top" Width="202" Height="40">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="Age" Mode="TwoWay" UpdateSourceTrigger="Explicit">
+                            <Binding.ValidationRules>
+                                <local:AgeValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
 
-                <TextBox materialDesign:HintAssist.Hint="Số điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxSoDienThoai" HorizontalAlignment="Left" Height="38" Margin="53,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
-                <TextBox materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxDiaChi" HorizontalAlignment="Left" Height="38" Margin="282,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
-                <Button Name="btnOk" Click="btnOk_Click" Content="Ok" HorizontalAlignment="Left" Margin="409,253,0,0" VerticalAlignment="Top" Width="75"/>
+                <TextBox materialDesign:HintAssist.Hint="Số điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxSoDienThoai" HorizontalAlignment="Left" Height="38" Margin="53,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="tbxDiaChi" HorizontalAlignment="Left" Height="38" Margin="282,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" RenderTransformOrigin="0.242,-0.478"/>
+                <Button Name="btnOk" Click="btnOk_Click" Content="Thêm" HorizontalAlignment="Left" Margin="409,253,0,0" VerticalAlignment="Top" Width="75"/>
             </Grid>
 
         </materialDesign:Card>

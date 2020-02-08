@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29A61BA3-2B03-4271-AE50-7962950E6421}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QUANLYVATTU_PHANTAN</RootNamespace>
+    <AssemblyName>QUANLYVATTU_PHANTAN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.2" />
+    <Reference Include="DevExpress.Printing.v14.2.Core" />
+    <Reference Include="DevExpress.Utils.v14.2" />
+    <Reference Include="DevExpress.XtraBars.v14.2" />
+    <Reference Include="DevExpress.Sparkline.v14.2.Core" />
+    <Reference Include="DevExpress.XtraEditors.v14.2" />
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaoCao\rptPhieuNVLapTrongNamTheoLoai.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuNVLapTrongNamTheoLoai.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rpt_Vidu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_Vidu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_CSDLCHINH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_CSDLCHINH.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDangNhap.Designer.cs">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInDanhSachPhieuNVLapTrongNamTheoLoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInDanhSachPhieuNVLapTrongNamTheoLoai.Designer.cs">
+      <DependentUpon>frmInDanhSachPhieuNVLapTrongNamTheoLoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLapPhieu.Designer.cs">
+      <DependentUpon>frmLapPhieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNHANVIEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNHANVIEN.Designer.cs">
+      <DependentUpon>frmNHANVIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNV_vidu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNV_vidu.Designer.cs">
+      <DependentUpon>frmNV_vidu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.Designer.cs">
+      <DependentUpon>frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rpt_BaoCaoCacPhieuTrongKhoangThoiGian.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_BaoCaoCacPhieuTrongKhoangThoiGian.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_sp_PhieuNvLapTrongNamTheoLoai.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_sp_PhieuNvLapTrongNamTheoLoai.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="BaoCao\rptPhieuNVLapTrongNamTheoLoai.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuNVLapTrongNamTheoLoai.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rpt_Vidu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_Vidu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInDanhSachPhieuNVLapTrongNamTheoLoai.resx">
+      <DependentUpon>frmInDanhSachPhieuNVLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLapPhieu.resx">
+      <DependentUpon>frmLapPhieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNHANVIEN.resx">
+      <DependentUpon>frmNHANVIEN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNV_vidu.resx">
+      <DependentUpon>frmNV_vidu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.resx">
+      <DependentUpon>frpt_InDanhSachPhieuNVLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="rpt_BaoCaoCacPhieuTrongKhoangThoiGian.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_BaoCaoCacPhieuTrongKhoangThoiGian.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_sp_PhieuNvLapTrongNamTheoLoai.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_sp_PhieuNvLapTrongNamTheoLoai.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS.xsc">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="DS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS.xss">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="DS_CSDLCHINH.xsc">
+      <DependentUpon>DS_CSDLCHINH.xsd</DependentUpon>
+    </None>
+    <None Include="DS_CSDLCHINH.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CSDLCHINH.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_CSDLCHINH.xss">
+      <DependentUpon>DS_CSDLCHINH.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Actions-list-add-user-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\secrecy-icon-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Apps-session-Exit-icon-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Save-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Text-Edit-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Delete-2-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Undo-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Button-Refresh-icon-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Exit-24-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Teacher-male-icon-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Teacher-male-icon-24.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -9,9 +9,15 @@
         <materialDesign:Card Padding="32" Margin="16,16,16,10" VerticalAlignment="Stretch">
             <Grid>
                 <TextBlock Name="tblTitle" FontSize="24" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Margin="53,10,52,0" TextWrapping="Wrap" Text="Thêm nhà cung cấp" VerticalAlignment="Top" Height="46" Width="431"/>
-                <TextBox  materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbTen" HorizontalAlignment="Left" Height="40" Margin="53,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478"/>
-                <TextBox materialDesign:HintAssist.Hint="Số điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbSDT" HorizontalAlignment="Left" Height="39" Margin="53,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478"/>
-                <TextBox materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbDiaChi" HorizontalAlignment="Left" Height="39" Margin="53,213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478" Grid.RowSpan="2"/>
+                <TextBox  materialDesign:HintAssist.Hint="Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbTen" HorizontalAlignment="Left" Height="40" Margin="53,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478">
+                    <Binding Path="Ten"  UpdateSourceTrigger="Explicit" >
+                        <Binding.ValidationRules>
+                            <local:ReqireValidator/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                <TextBox materialDesign:HintAssist.Hint="Số điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbSDT" HorizontalAlignment="Left" Height="39" Margin="53,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478"/>
+                <TextBox materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txbDiaChi" HorizontalAlignment="Left" Height="39" Margin="53,213,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="431" RenderTransformOrigin="0.242,-0.478" Grid.RowSpan="2"/>
                 <Button Name="btnOk" Click="btnOk_Click" Content="Ok" HorizontalAlignment="Left" Margin="409,271,0,0" VerticalAlignment="Top" Width="75"/>
             </Grid>
         </materialDesign:Card>

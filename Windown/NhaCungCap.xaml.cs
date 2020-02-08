@@ -23,13 +23,30 @@ namespace WpfApp2
         private NhaCungCap()
         {
             InitializeComponent();
+            switch (Common.CurrentRole)
+            {
+                case Common.RoleNhanVien:
+                    break;
+                case Common.RoleChiNhanh:
+                    break;
+                case Common.RoleCongTy:
+                    btnAdd.IsEnabled = false;
+                    btnEdit.IsEnabled = false;
+                    btnRemove.IsEnabled = false;
+                    btnSave.IsEnabled = false;
+                    btnUndo.IsEnabled = false;
+                    btnRedo.IsEnabled = false;
+                    break;
+                default:
+                    break;
+            }
             try
             {
                 loadData(0);
             }
             catch (Exception ex)
             {
-                Common.ShowMessage(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         public void add()
@@ -52,19 +69,26 @@ namespace WpfApp2
 
         public void loadData(int p)
         {
-            page = new Paging(Common.connection, "NhaCungCap", "NhaCungCapId desc");
-            QLVTDataSet.NhaCungCapDataTable nhaCungCaps = new QLVTDataSet.NhaCungCapDataTable();
-
-
-            DataTable dataTable = page.getPage(p);
-            if (dataTable != null)
+            try
             {
-                nhaCungCaps.Merge(dataTable);
-            }
-            dgContent.ItemsSource = nhaCungCaps;
-            tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+                page = new Paging(Common.connection, "NhaCungCap", "NhaCungCapId desc");
+                QLVTDataSet.NhaCungCapDataTable nhaCungCaps = new QLVTDataSet.NhaCungCapDataTable();
 
-            tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+
+                DataTable dataTable = page.getPage(p);
+                if (dataTable != null)
+                {
+                    nhaCungCaps.Merge(dataTable);
+                }
+                dgContent.ItemsSource = nhaCungCaps;
+                tableLog = new DataTableLog((DataTable)dgContent.ItemsSource);
+
+                tblNumPage.Text = (page.currentIndex + 1) + "/" + (page.totalPage + 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void redo()
@@ -79,9 +103,19 @@ namespace WpfApp2
 
         public int update()
         {
+
             QLVTDataSetTableAdapters.NhaCungCapTableAdapter nhaCungCapTableAdapter = Common.NhaCungCapTableAdapter;
             nhaCungCapTableAdapter.Connection = Common.connection;
-            return nhaCungCapTableAdapter.Update((QLVTDataSet.NhaCungCapDataTable)dgContent.ItemsSource);
+            int rs = 0;
+            try
+            {
+                rs = nhaCungCapTableAdapter.Update((QLVTDataSet.NhaCungCapDataTable)dgContent.ItemsSource);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rs;
         }
 
         private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -93,20 +127,22 @@ namespace WpfApp2
         {
             if (update() > 0)
             {
-                Common.ShowMessage("Saved!");
+                MessageBox.Show("Saved!");
+                loadData(0);
             };
         }
 
-       private void btnUndo_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnUndo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            try{
+            try
+            {
                 undo();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            
+
         }
 
         private void btnRedo_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -119,7 +155,7 @@ namespace WpfApp2
             {
 
             }
-           
+
         }
 
         private void btnRefresh_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -135,7 +171,7 @@ namespace WpfApp2
                 p--;
                 if (p < 0 || p > page.totalPage)
                 {
-                    Common.ShowMessage("Page not found!");
+                    MessageBox.Show("Page not found!");
                 }
                 else
                 {
@@ -145,7 +181,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Invalid number format!");
+                MessageBox.Show("Invalid number format!");
             }
         }
 
@@ -154,7 +190,7 @@ namespace WpfApp2
             int p = page.currentIndex - 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -169,7 +205,7 @@ namespace WpfApp2
             int p = page.currentIndex + 1;
             if (p < 0 || p > page.totalPage)
             {
-                Common.ShowMessage("Page not found!");
+                MessageBox.Show("Page not found!");
             }
             else
             {
@@ -207,7 +243,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
 
         }
@@ -220,7 +256,7 @@ namespace WpfApp2
             }
             else
             {
-                Common.ShowMessage("Không có hàng nào được chọn!");
+                MessageBox.Show("Không có hàng nào được chọn!");
             }
         }
     }

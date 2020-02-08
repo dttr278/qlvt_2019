@@ -33,7 +33,7 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" Height="333" SelectionMode="Single"  VerticalAlignment="Top">
+            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" Height="258" SelectionMode="Single"  VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã" Binding="{Binding DatHangId}" />
                     <DataGridTextColumn Header="Mã nhà cung cấp" Binding="{Binding NhaCungCapId}" />
@@ -57,16 +57,20 @@
             </DockPanel>
         </Grid>
         <Grid>
-            <TextBlock Text="Phiếu nhập" Margin="0,0,423,315"/>
-            <DataGrid Name="dgPN" AutoGenerateColumns="False" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Top" Width="772" Margin="0,35,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="653*"/>
+                <ColumnDefinition Width="147*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Phiếu nhập" TextAlignment="Center" FontSize="14" FontWeight="Bold"  VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Left" Width="377"/>
+            <DataGrid Name="dgPN" AutoGenerateColumns="False" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Width="377" Margin="0,35,0,24.6">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Kho" Binding="{Binding KhoId}" />
                     <DataGridTextColumn Header="Mã nhân viên nhập" Binding="{Binding NhanVienId}" />
-                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian}" />
+                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian,Converter={StaticResource dateConverter}}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock Text="Chi tiết phiếu nhập" Margin="477,0,0,310"/>
-            <DataGrid Name="dgCTPN" Margin="477,35,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Chi tiết phiếu nhập" Margin="396,10,10,0" Grid.ColumnSpan="2"/>
+            <DataGrid Name="dgCTPN" Margin="406,35,0,24.6" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã mặt hàng" Binding="{Binding MatHangId}" />
                     <DataGridTextColumn Header="Tên mặt hàng" Binding="{Binding MatHangId, Converter={StaticResource matHangConverter}}" />

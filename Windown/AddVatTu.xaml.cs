@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp2
 {
@@ -41,7 +33,7 @@ namespace WpfApp2
 
         private AddVatTu()
         {
-
+            this.DataContext = new ViewModel();
             InitializeComponent();
             QLVTDataSet.LoaiHangDataTable loaiHangs = new QLVTDataSet.LoaiHangDataTable();
             Common.LoaiHangTableAdapter.Connection = Common.connection;
@@ -57,42 +49,53 @@ namespace WpfApp2
         }
         public AddVatTu(DataRow row)
         {
+            this.DataContext = new ViewModel();
+
             InitializeComponent();
             QLVTDataSet.LoaiHangDataTable loaiHangs = new QLVTDataSet.LoaiHangDataTable();
             Common.LoaiHangTableAdapter.Connection = Common.connection;
             Common.LoaiHangTableAdapter.Fill(loaiHangs);
             dgLoaiMatHang.ItemsSource = loaiHangs;
 
-            tbxTen.Text = row["Ten"] as string;
-            tbxDVT.Text = row["DonViTinh"] as string;
-            dgLoaiMatHang.SelectedValue = row["LoaiHangId"].ToString();
+            ((ViewModel)this.DataContext).Ten = tbxTen.Text = row["Ten"] as string;
+            ((ViewModel)this.DataContext).DonVi = tbxDVT.Text = row["DonViTinh"] as string;
+            ((ViewModel)this.DataContext).LoaiVatTu = dgLoaiMatHang.SelectedValue = row["LoaiHangId"].ToString();
             this.row = row;
+            tblTitle.Text = "Chỉnh sửa";
 
             tblTitle.Text = "ID:" + row["MatHangId"].ToString();
         }
-
+        private void ForceValidation()
+        {
+            tbxTen.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbxDVT.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            dgLoaiMatHang.GetBindingExpression(DataGrid.SelectedValueProperty).UpdateSource();
+        }
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (row == null)
+            ForceValidation();
+            if (!Validation.GetHasError(tbxTen) && !Validation.GetHasError(tbxDVT) && !Validation.GetHasError(dgLoaiMatHang))
             {
-                QLVTDataSet.MatHangDataTable matHangs = (QLVTDataSet.MatHangDataTable)dataGrid.ItemsSource;
+                if (row == null)
+                {
+                    QLVTDataSet.MatHangDataTable matHangs = (QLVTDataSet.MatHangDataTable)dataGrid.ItemsSource;
 
-                DataRow row = matHangs.NewRow();
-                row["Ten"] = tbxTen.Text;
-                row["DonViTinh"] = tbxDVT.Text;
-                row["MatHangId"] = Common.genId--;
-                row["LoaiHangId"]= ((DataRow)((DataRowView)dgLoaiMatHang.SelectedItem).Row)["LoaiHangId"];
-                matHangs.Rows.Add(row);
-                this.Close();
+                    DataRow row = matHangs.NewRow();
+                    row["Ten"] = tbxTen.Text;
+                    row["DonViTinh"] = tbxDVT.Text;
+                    row["MatHangId"] = Common.genId--;
+                    row["LoaiHangId"] = ((DataRow)((DataRowView)dgLoaiMatHang.SelectedItem).Row)["LoaiHangId"];
+                    matHangs.Rows.Add(row);
+                    this.Close();
+                }
+                else
+                {
+                    row["Ten"] = tbxTen.Text;
+                    row["DonViTinh"] = tbxDVT.Text;
+                    row["LoaiHangId"] = ((DataRow)((DataRowView)dgLoaiMatHang.SelectedItem).Row)["LoaiHangId"];
+                    this.Close();
+                }
             }
-            else
-            {
-                row["Ten"] = tbxTen.Text;
-                row["DonViTinh"] = tbxDVT.Text;
-                row["LoaiHangId"] = ((DataRow)((DataRowView)dgLoaiMatHang.SelectedItem).Row)["LoaiHangId"];
-                this.Close();
-            }
-
         }
 
         private void dgLoaiMatHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,13 +110,13 @@ namespace WpfApp2
             {
                 DataTable table;
                 int rs;
-                if (int.TryParse(tbxLoaiHang.Text,out rs))
+                if (int.TryParse(tbxLoaiHang.Text, out rs))
                 {
-                    table = Common.LoaiHangDataTable.Select("Ten like '%" + tbxLoaiHang.Text + "%' or LoaiHangId = " + rs).CopyToDataTable();
+                    table = Common.LoaiHangDataTable.Select("Ten like '%" + tbxLoaiHang.Text + "%' or LoaiHangId = " + rs).Take(5).CopyToDataTable();
                 }
                 else
                 {
-                    table = Common.LoaiHangDataTable.Select("Ten like '%" + tbxLoaiHang.Text + "%'").CopyToDataTable();
+                    table = Common.LoaiHangDataTable.Select("Ten like '%" + tbxLoaiHang.Text + "%'").Take(5).CopyToDataTable();
                 }
                 loaiHangs.Merge(table);
                 dgLoaiMatHang.ItemsSource = loaiHangs;

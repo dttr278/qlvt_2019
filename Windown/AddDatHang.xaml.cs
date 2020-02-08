@@ -39,9 +39,10 @@ namespace WpfApp2
 
         private AddDatHang()
         {
-
+           
             InitializeComponent();
-
+            ViewModel viewModel = new ViewModel();
+            this.DataContext = viewModel;
             dgNhaCungCap.ItemsSource = Common.NhaCungCapDataTable;
             dgMatHang.ItemsSource = Common.MatHangDataTable;
 
@@ -50,29 +51,52 @@ namespace WpfApp2
             EventHandler eventHandler = (o, i) => { signleton = new AddDatHang(); };
             this.Closed += eventHandler;
 
-        }
+            //viewModel.NhaCungCap = dgNhaCungCap.SelectedValue;
+            //viewModel.ChiTietDatHang = dgCTDH.SelectedValue;
+            
 
+
+
+        }
+        private void ForceValidation()
+        {
+            dgNhaCungCap.GetBindingExpression(DataGrid.SelectedValueProperty).UpdateSource();
+            //dgCTDH.GetBindingExpression(DataGrid.ItemsSourceProperty).UpdateSource();
+        }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            DataRow ncc = ((DataRowView)dgNhaCungCap.SelectedItem).Row;
-            string sql = "exec SP_DATHANG @NhanVien = " + Common.CurrentUser + " ,@NhaCungCap = " + ncc["NhaCungCapId"];
-            SqlCommand c = new SqlCommand(sql, Common.connection);
-            if (Common.connection.State != ConnectionState.Open)
-                Common.connection.Open();
-            SqlDataReader reader = c.ExecuteReader();
-            reader.Read();
-            String dhId = reader.GetValue(0).ToString();
-            reader.Close();
-            QLVTDataSet.CTDatHangDataTable datHangRows = (QLVTDataSet.CTDatHangDataTable)dgCTDH.ItemsSource;
-            foreach (DataRow row in datHangRows.Rows)
+            ForceValidation();
+            if (!Validation.GetHasError(dgNhaCungCap) && dgCTDH.Items.Count>0)
             {
-                row["DatHangId"] = dhId;
+                DataRow ncc = ((DataRowView)dgNhaCungCap.SelectedItem).Row;
+                string sql = "exec SP_DATHANG @NhanVien = " + Common.CurrentUser + " ,@NhaCungCap = " + ncc["NhaCungCapId"];
+                SqlCommand c = new SqlCommand(sql, Common.connection);
+                if (Common.connection.State != ConnectionState.Open)
+                    Common.connection.Open();
+                SqlDataReader reader = c.ExecuteReader();
+                reader.Read();
+                String dhId = reader.GetValue(0).ToString();
+                reader.Close();
+                QLVTDataSet.CTDatHangDataTable datHangRows = (QLVTDataSet.CTDatHangDataTable)dgCTDH.ItemsSource;
+                foreach (DataRow row in datHangRows.Rows)
+                {
+                    row["DatHangId"] = dhId;
+                }
+                Common.CTDatHangTableAdapter.Connection = Common.connection;
+                Common.CTDatHangTableAdapter.Update(datHangRows);
+                DatHang.loadData(0);
+                //this.Close();
+                dgCTDH.SelectedIndex = -1;
+                dgNhaCungCap.SelectedIndex = -1;
+                dgMatHang.SelectedIndex = -1;
+                dgCTDH.ItemsSource = ctdh = new QLVTDataSet.CTDatHangDataTable();
+                MessageBox.Show("Đã thêm!");
+            }else
+            if(dgCTDH.Items.Count == 0)
+            {
+                MessageBox.Show("Không được bỏ trống chi tiết đặt hàng.");
             }
-            Common.CTDatHangTableAdapter.Connection = Common.connection;
-            Common.CTDatHangTableAdapter.Update(datHangRows);
-            DatHang.loadData(0);
-            this.Close();
         }
 
         private void dgNhaCungCap_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,11 +114,11 @@ namespace WpfApp2
                 int rs;
                 if (int.TryParse(txbVT.Text, out rs))
                 {
-                    table = Common.MatHangDataTable.Select("Ten like '%" + txbVT.Text + "%' or MatHangId = " + rs).CopyToDataTable();
+                    table = Common.MatHangDataTable.Select("Ten like '%" + txbVT.Text + "%' or MatHangId = " + rs).Take(5).CopyToDataTable();
                 }
                 else
                 {
-                    table = Common.MatHangDataTable.Select("Ten like '%" + txbVT.Text + "%'").CopyToDataTable();
+                    table = Common.MatHangDataTable.Select("Ten like '%" + txbVT.Text + "%'").Take(5).CopyToDataTable();
                 }
                 matHangs.Merge(table);
                 dgMatHang.ItemsSource = matHangs;
@@ -113,11 +137,11 @@ namespace WpfApp2
                 int rs;
                 if (int.TryParse(txbNCC.Text, out rs))
                 {
-                    table = Common.NhaCungCapDataTable.Select("Ten like '%" + txbNCC.Text + "%' or NhaCungCapId = " + rs).CopyToDataTable();
+                    table = Common.NhaCungCapDataTable.Select("Ten like '%" + txbNCC.Text + "%' or NhaCungCapId = " + rs).Take(5).CopyToDataTable();
                 }
                 else
                 {
-                    table = Common.NhaCungCapDataTable.Select("Ten like '%" + txbNCC.Text + "%'").CopyToDataTable();
+                    table = Common.NhaCungCapDataTable.Select("Ten like '%" + txbNCC.Text + "%'").Take(5).CopyToDataTable();
                 }
                 ncc.Merge(table);
                 dgNhaCungCap.ItemsSource = ncc;

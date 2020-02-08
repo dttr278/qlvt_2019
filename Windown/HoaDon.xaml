@@ -34,10 +34,10 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" Height="333" SelectionMode="Single"  VerticalAlignment="Top">
+            <DataGrid SelectionChanged="dgContent_SelectionChanged" Name="dgContent" Margin="0,56,0,30" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" Height="258" SelectionMode="Single"  VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã" Binding="{Binding HoaDonId}" />
-                   
+
                     <DataGridTextColumn Header="Mã khách hàng" Binding="{Binding KhachHangId}" />
                     <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding KhachHangId,Converter={StaticResource khachHangConverter}}" />
                     <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding NhanVienId }"/>
@@ -61,7 +61,7 @@
             </DockPanel>
         </Grid>
         <Grid>
-            <DataGrid Name="dgCTContent" Margin="0,0,0,0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Top">
+            <DataGrid Name="dgCTContent" Margin="0,0,0,25" AutoGenerateColumns="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã mặt hàng" Binding="{Binding MatHangId}" />
                     <DataGridTextColumn Header="Tên mặt hàng" Binding="{Binding MatHangId, Converter={StaticResource matHangConverter}}" />

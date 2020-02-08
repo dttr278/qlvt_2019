@@ -4,7 +4,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:WpfApp2" x:Class="WpfApp2.MainContentWindow" mc:Ignorable="d" 
     Closed="Window_Closed"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Title="MainContentWindow" Height="800" Width="1061.282" WindowStartupLocation="CenterScreen">
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Title="MainContentWindow" Height="650" Width="1050" WindowStartupLocation="CenterScreen">
 
     <Grid>
 
@@ -41,33 +41,50 @@
                 </Button>
                 <Separator/>
                 <ComboBox Name="cbxCN"/>
-                <Menu VerticalAlignment="Center">
+                <Menu VerticalAlignment="Center" x:Name="rpMenu">
                     <MenuItem Header="Báo cáo">
-                        <MenuItem Header="Báo cáo 1">
+                        <MenuItem Name="btnRPNhanView" Click="btnRPNhanView_Click" Header="DS nhân viên">
+                        </MenuItem>
+                        <MenuItem Name="btnRPVatTu" Click="btnRPVatTu_Click" Header="Vật tư">
 
                         </MenuItem>
-                        <MenuItem Header="Báo cáo 2">
+                        <MenuItem Name="btnRPNhapXuatNgay" Click="btnRPNhapXuatNgay_Click" Header="Nhập/xuất theo ngày">
 
                         </MenuItem>
-                        <MenuItem Header="Báo cáo 3">
+                        <MenuItem Name="btnRPCTNXThang" Click="btnRPCTNXThang_Click" Header="Chi tiết nhập/xuất theo tháng">
+
+                        </MenuItem>
+                        <MenuItem Name="btnRPHDNV" Click="btnRPHDNV_Click" Header="Hoạt động nhân viên">
+
+                        </MenuItem>
+                        <MenuItem Name="btnRPNhapThang" Click="btnRPNhapThang_Click" Header="Nhập theo tháng">
+
+                        </MenuItem>
+                        <MenuItem Name="btnRPXuatThang" Click="btnRPXuatThang_Click" Header="Xuất theo tháng">
 
                         </MenuItem>
                     </MenuItem>
                 </Menu>
             </ToolBar>
         </ToolBarTray>
-        <DockPanel Name="pnContent" Margin="0,50,0,0"/>
+        <TextBlock Margin="0,50,0,0" FontSize="14" FontWeight="Bold" Padding="26,0,0,0" VerticalAlignment="Top" Name="tbxTitle" Height="24"></TextBlock>
+        <DockPanel Name="pnContent" Margin="0,79,0,0" />
         <DockPanel LastChildFill="False" Margin="10,0" Height="35" VerticalAlignment="Bottom">
+            <!--<TextBlock Height="25" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Margin="10,10,0,0">
+                    <Hyperlink Name="linkLogout" Click="linkLogout_Click">
+                        <materialDesign:PackIcon Kind="Logout"/>
+                    </Hyperlink>
+            </TextBlock>-->
             <TextBlock Height="25" TextWrapping="Wrap" Text="Login: " VerticalAlignment="Top" Margin="10,10,0,0"/>
-            <TextBlock Name="tblLogin" Height="25" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Margin="0,10,0,0"/>
-            <TextBlock Height="25" TextWrapping="Wrap" Text="Username: " VerticalAlignment="Top" Margin="10,10,0,0"/>
-            <TextBlock Name="tblUserName" Height="25" TextWrapping="Wrap" Text="User:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Name="tblLogin" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Height="25" TextWrapping="Wrap" Text="Username(Mã nhân viên): " VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <TextBlock Name="tblUserName" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,10,0,0"/>
             <TextBlock Height="25" TextWrapping="Wrap" Text="Nhóm: " VerticalAlignment="Top" Margin="10,10,0,0"/>
-            <TextBlock Name="tblNhom" Height="25" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Name="tblNhom" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,10,0,0"/>
             <TextBlock Height="25" TextWrapping="Wrap" Text="Chi nhánh: " VerticalAlignment="Top" Margin="10,10,0,0"/>
-            <TextBlock Name="tblChiNhanh" Height="25" TextWrapping="Wrap" Text="Chi nhánh:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock Name="tblChiNhanh" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,10,0,0"/>
         </DockPanel>
 
-        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>
+        <!--<materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"/>-->
     </Grid>
 </Window>

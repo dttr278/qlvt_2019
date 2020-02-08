@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8899EBC8-5A02-4CE8-9BBA-EF98A24B562B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>QUANLYDIEMSV.Frmmain</StartupObject>
+    <RootNamespace>QUANLYDIEMSV</RootNamespace>
+    <AssemblyName>QUANLYDIEMSV</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>QUANLYDIEMSV.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>QUANLYDIEMSV.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS.vb">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmdiem.Designer.vb">
+      <DependentUpon>frmdiem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmdiem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmgv.Designer.vb">
+      <DependentUpon>Frmgv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmgv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmkhdaotao.Designer.vb">
+      <DependentUpon>Frmkhdaotao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmkhdaotao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmkhoa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmkhoa.Designer.vb">
+      <DependentUpon>Frmkhoa.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlop.Designer.vb">
+      <DependentUpon>frmlop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmlop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmmain.Designer.vb">
+      <DependentUpon>Frmmain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmmain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmmonhoc.Designer.vb">
+      <DependentUpon>Frmmonhoc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmmonhoc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmnganh.Designer.vb">
+      <DependentUpon>Frmnganh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmnganh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmsv.Designer.vb">
+      <DependentUpon>Frmsv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frmsv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongBao.Designer.vb">
+      <DependentUpon>frmThongBao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongBao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frptbangdiemmh.Designer.vb">
+      <DependentUpon>Frptbangdiemmh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frptbangdiemmh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frptbangdiemthi.Designer.vb">
+      <DependentUpon>Frptbangdiemthi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frptbangdiemthi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrptDSLOP1KHOA.Designer.vb">
+      <DependentUpon>FrptDSLOP1KHOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrptDSLOP1KHOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrptDSSV1LOP.Designer.vb">
+      <DependentUpon>FrptDSSV1LOP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrptDSSV1LOP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frpt_DSSVLOP.Designer.vb">
+      <DependentUpon>Frpt_DSSVLOP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frpt_DSSVLOP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rpt_BANGDIEMTHI.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_BANGDIEMTHI.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_BDMH.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_BDMH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_BDTK.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_BDTK.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_DSLOP_1KHOA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_DSLOP_1KHOA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_DSSVKHOA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_DSSVKHOA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_DSSVLOP.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_DSSVLOP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_DSSV_1LOP.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_DSSV_1LOP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_DSSV_new.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_DSSV_new.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmdiem.resx">
+      <DependentUpon>frmdiem.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmgv.resx">
+      <DependentUpon>Frmgv.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmkhdaotao.resx">
+      <DependentUpon>Frmkhdaotao.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmkhoa.resx">
+      <DependentUpon>Frmkhoa.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlop.resx">
+      <DependentUpon>frmlop.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmmain.resx">
+      <DependentUpon>Frmmain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmmonhoc.resx">
+      <DependentUpon>Frmmonhoc.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmnganh.resx">
+      <DependentUpon>Frmnganh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmsv.resx">
+      <DependentUpon>Frmsv.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongBao.resx">
+      <DependentUpon>frmThongBao.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frptbangdiemmh.resx">
+      <DependentUpon>Frptbangdiemmh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frptbangdiemthi.resx">
+      <DependentUpon>Frptbangdiemthi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrptDSLOP1KHOA.resx">
+      <DependentUpon>FrptDSLOP1KHOA.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrptDSSV1LOP.resx">
+      <DependentUpon>FrptDSSV1LOP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frpt_DSSVLOP.resx">
+      <DependentUpon>Frpt_DSSVLOP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_BANGDIEMTHI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_BANGDIEMTHI.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_BDMH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_BDMH.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_BDTK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_BDTK.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_DSLOP_1KHOA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_DSLOP_1KHOA.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_DSSVKHOA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_DSSVKHOA.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_DSSVLOP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_DSSVLOP.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_DSSV_1LOP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_DSSV_1LOP.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_DSSV_new.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_DSSV_new.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DS.xsc">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="DS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS.xss">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

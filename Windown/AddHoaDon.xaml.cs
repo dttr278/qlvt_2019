@@ -33,7 +33,7 @@ namespace WpfApp2
         {
 
             InitializeComponent();
-
+            this.DataContext = new ViewModel();
             dgKho.ItemsSource = Common.KhoDataTable;
             dgKhachhang.ItemsSource = Common.KhachHangDataTable;
             dgMatHang.ItemsSource = Common.MatHangDataTable;
@@ -45,28 +45,59 @@ namespace WpfApp2
 
         }
 
+        private void ForceValidation()
+        {
+            dgKho.GetBindingExpression(DataGrid.SelectedValueProperty).UpdateSource();
+            dgKhachhang.GetBindingExpression(DataGrid.SelectedValueProperty).UpdateSource();
+        }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            DataRow kho = ((DataRowView)dgKho.SelectedItem).Row;
-            DataRow kh = ((DataRowView)dgKhachhang.SelectedItem).Row;
-            string sql = "exec SP_TAOHOADON @NhanVien = " + Common.CurrentUser + " ,@Kho = " + kho["KhoId"] + " ,@KhachHang=" + kh["KhachHangId"];
-            SqlCommand c = new SqlCommand(sql, Common.connection);
-            if (Common.connection.State != ConnectionState.Open)
-                Common.connection.Open();
-            SqlDataReader reader = c.ExecuteReader();
-            reader.Read();
-            String dhId = reader.GetValue(0).ToString();
-            reader.Close();
-            QLVTDataSet.CTHoaDonDataTable cthds = (QLVTDataSet.CTHoaDonDataTable)dgCTHD.ItemsSource;
-            foreach (DataRow row in cthds.Rows)
+            ForceValidation();
+            if (!Validation.GetHasError(dgKhachhang) && !Validation.GetHasError(dgKho) && dgCTHD.Items.Count > 0)
             {
-                row["HoaDonId"] = dhId;
+                DataRow kho = ((DataRowView)dgKho.SelectedItem).Row;
+                DataRow kh = ((DataRowView)dgKhachhang.SelectedItem).Row;
+                string sql = "exec SP_TAOHOADON @NhanVien = " + Common.CurrentUser + " ,@Kho = " + kho["KhoId"] + " ,@KhachHang=" + kh["KhachHangId"];
+                SqlCommand c = new SqlCommand(sql, Common.connection);
+                if (Common.connection.State != ConnectionState.Open)
+                    Common.connection.Open();
+                SqlDataReader reader = c.ExecuteReader();
+                reader.Read();
+                String dhId = reader.GetValue(0).ToString();
+                reader.Close();
+                QLVTDataSet.CTHoaDonDataTable cthds = (QLVTDataSet.CTHoaDonDataTable)dgCTHD.ItemsSource;
+                string kq = "";
+                foreach (DataRow row in cthds.Rows)
+                {
+                    row["HoaDonId"] = dhId;
+                    int rs = insertCTHD(row);
+
+                    if (rs >= 0)
+                    {
+                        kq += "Số lượng mặt hàng có mã " + row["MatHangId"] + " là " + row["SoLuong"] + " lớn hơn số lượng trong kho " + rs + "\n";
+                    }
+
+                }
+                //Common.CTHoaDonTableAdapter.Connection = Common.connection;
+                //Common.CTHoaDonTableAdapter.Update(cthds);
+                HoaDon.loadData(0);
+                dgKho.SelectedIndex = -1;
+                dgKhachhang.SelectedIndex = -1;
+                dgMatHang.SelectedIndex = -1;
+                dgCTHD.ItemsSource = cthd = new QLVTDataSet.CTHoaDonDataTable();
+                MessageBox.Show("Đã thêm hóa đơn " + dhId);
+                if (kq.Length > 0)
+                {
+                    MessageBox.Show(kq);
+                }
+                //this.Close();
             }
-            Common.CTHoaDonTableAdapter.Connection = Common.connection;
-            Common.CTHoaDonTableAdapter.Update(cthds);
-            HoaDon.loadData(0);
-            this.Close();
+            else
+            if (dgCTHD.Items.Count == 0)
+            {
+                MessageBox.Show("Không được bỏ trống chi tiết hóa đơn.");
+            }
         }
 
 
@@ -178,6 +209,22 @@ namespace WpfApp2
         {
             if (dgKhachhang.SelectedItem != null)
                 tbxKhachHang.Text = ((DataRow)((DataRowView)dgKhachhang.SelectedItem).Row)["Ten"].ToString();
+        }
+        int insertCTHD(DataRow row)
+        {
+            string sql = "exec INSERT_CT_HOA_DON @MatHangId = " + row["MatHangId"]
+                + ", @HoaDonId = " + row["HoaDonId"]
+                + ", @SoLuong = " + row["SoLuong"]
+                 + ", @DonGia = " + row["DonGia"];
+            SqlCommand c = new SqlCommand(sql, Common.connection);
+            if (Common.connection.State != ConnectionState.Open)
+                Common.connection.Open();
+            SqlDataReader reader = c.ExecuteReader();
+            reader.Read();
+            string strRs = reader.GetValue(0).ToString();
+            reader.Close();
+
+            return Convert.ToInt32(strRs);
         }
     }
 }

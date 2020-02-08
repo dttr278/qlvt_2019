@@ -1,6 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Controls;
 
 namespace WpfApp2
 {
@@ -11,6 +13,11 @@ namespace WpfApp2
         static private string userid0;
         static private string password0;
 
+        public const string RoleChiNhanh = "CHINHANH";
+        public const string RoleNhanVien = "USER";
+        public const string RoleCongTy = "CONGTY";
+
+        public static DataRow CurrentUserInfo;
 
         public static string CurrentUser { get; set; }
         public static string CurrentRole { get; set; }
@@ -26,6 +33,9 @@ namespace WpfApp2
         public static Object CurrentChiNhanh;
         public static Object CurrentChiNhanhId;
         public static Object LoginChiNhanhName;
+
+        public static string CurrentCNName;
+
 
         public static string Server { get; set; }
         public static string Database { get; set; }
@@ -95,8 +105,8 @@ namespace WpfApp2
             
             KhachHangTableAdapter = new QLVTDataSetTableAdapters.KhachHangTableAdapter();
             KhachHangTableAdapter.Adapter.InsertCommand.CommandText = 
-                "IF(@KhachHangId < 0) INSERT INTO KhachHang (Ten,Ho,SoDienThoai,DiaChi,ChiNhanhId) VALUES(@Ten,@Ho,@SoDienThoai,@DiaChi,@ChiNhanhId)"
-                + "ELSE INSERT INTO KhachHang (KhachHangId,Ten,Ho,SoDienThoai,DiaChi,ChiNhanhId) VALUES(@KhachHangId,@Ten,@Ho,@SoDienThoai,@DiaChi,@ChiNhanhId)";
+                "IF(@KhachHangId < 0) INSERT INTO KhachHang (Ten,SoDienThoai,DiaChi,ChiNhanhId) VALUES(@Ten,@SoDienThoai,@DiaChi,@ChiNhanhId)"
+                + "ELSE INSERT INTO KhachHang (KhachHangId,Ten,SoDienThoai,DiaChi,ChiNhanhId) VALUES(@KhachHangId,@Ten,@SoDienThoai,@DiaChi,@ChiNhanhId)";
 
             NhaCungCapTableAdapter = new QLVTDataSetTableAdapters.NhaCungCapTableAdapter();
             NhaCungCapTableAdapter.Adapter.InsertCommand.CommandText =
@@ -146,23 +156,23 @@ namespace WpfApp2
             }
         }
 
-        public static async void ShowMessage(String mess, String root = "RootDialog")
-        {
-            var messageDialog = new MessageDialog
-            {
-                Message = { Text = mess }
-            };
-            try
-            {
-                await DialogHost.Show(messageDialog, root);
-                DialogHost.CloseDialogCommand.Execute(new object(), null);
-            }
-            catch (Exception ex)
-            {
-                DialogHost.CloseDialogCommand.Execute(new object(), null);
-            }
+        //public static async void ShowMessage(String mess, String root = "RootDialog")
+        //{
+        //    var messageDialog = new MessageDialog
+        //    {
+        //        Message = { Text = mess }
+        //    };
+        //    try
+        //    {
+        //        await DialogHost.Show(messageDialog, root);
+        //        DialogHost.CloseDialogCommand.Execute(new object(), null);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DialogHost.CloseDialogCommand.Execute(new object(), null);
+        //    }
 
 
-        }
+        //}
     }
 }
